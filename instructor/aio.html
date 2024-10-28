@@ -244,7 +244,19 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="introduction.html">1. Hello-Scraping</a>
+        <a href="hello-scraping.html">1. Hello-Scraping</a>
+    </div>
+<!--/div.accordion-header-->
+
+  </div>
+<!--/div.accordion-item-->
+</div>
+<!--/div.accordion-flush-->
+
+<div class="accordion accordion-flush" id="accordionFlush3">
+  <div class="accordion-item">
+    <div class="accordion-header" id="flush-heading3">
+        <a href="a-real-website.html">2. Scraping a real website</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -308,12 +320,12 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         
         
-<section id="aio-introduction"><p>Content from <a href="introduction.html">Hello-Scraping</a></p>
+<section id="aio-hello-scraping"><p>Content from <a href="hello-scraping.html">Hello-Scraping</a></p>
 <hr>
-<p>Last updated on 2024-10-26 |
+<p>Last updated on 2024-10-28 |
 
-        <a href="https://github.com/josenino95/web-scraping-python/edit/main/episodes/introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
-<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 60 minutes</p>
+        <a href="https://github.com/josenino95/web-scraping-python/edit/main/episodes/hello-scraping.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 35 minutes</p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
         </div>
@@ -348,8 +360,8 @@ challenge blocks</li>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
 <hr class="half-width">
-<p>This is part 2 of an Introduction to Web Scraping workshop we offered
-on February 2024. You can refer to those <a href="https://ucsbcarpentry.github.io/2024-02-27-ucsb-webscraping/" class="external-link">workshop
+<p>This is part two of an Introduction to Web Scraping workshop we
+offered on February 2024. You can refer to those <a href="https://ucsbcarpentry.github.io/2024-02-27-ucsb-webscraping/" class="external-link">workshop
 materials</a> to have a more gentle introduction to scraping using XPath
 and the <code>Scraper</code> Chrome extension.</p>
 <p>We’ll refresh some of the concepts covered there to have a practical
@@ -376,11 +388,11 @@ looks?</p>
 <span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">title</span><span class="dt">&gt;</span>Sample web page<span class="dt">&lt;/</span><span class="kw">title</span><span class="dt">&gt;</span></span>
 <span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">head</span><span class="dt">&gt;</span></span>
 <span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">body</span><span class="dt">&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="ot"> id</span><span class="op">=</span><span class="st">"head1"</span><span class="dt">&gt;</span>h1 Header #1<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>h1 Header #1<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
 <span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>This is a paragraph tag<span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="ot"> id</span><span class="op">=</span><span class="st">"subhead1"</span><span class="dt">&gt;</span>h2 Sub-header<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h2</span><span class="dt">&gt;</span>h2 Sub-header<span class="dt">&lt;/</span><span class="kw">h2</span><span class="dt">&gt;</span></span>
 <span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span>A new paragraph, now in the <span class="dt">&lt;</span><span class="kw">b</span><span class="dt">&gt;</span>sub-header<span class="dt">&lt;/</span><span class="kw">b</span><span class="dt">&gt;&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
-<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="ot"> id</span><span class="op">=</span><span class="st">"head2"</span><span class="dt">&gt;</span>h1 Header #2<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">h1</span><span class="dt">&gt;</span>h1 Header #2<span class="dt">&lt;/</span><span class="kw">h1</span><span class="dt">&gt;</span></span>
 <span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>This other paragraph has two hyperlinks,</span>
 <span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>one to <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://carpentries.org/"</span><span class="dt">&gt;</span>The Carpentries homepage<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span>,</span>
@@ -393,11 +405,11 @@ looks?</p>
 <p>Well, if you put that text in a file with a .html extension, the job
 of your web browser when opening the file will be to interpret that
 (markup) language and display a nicely formatted website.</p>
-<figure><img src="../fig/simple_website.PNG" alt="Screenshot of a simple website with the previews HTML" class="figure mx-auto d-block"></figure><p>An HTML document is composed of elements, which can be identified by
-tags written inside angle brackets (<code>&lt;</code> and
-<code>&gt;</code>). For example, the HTML root element, which delimits
-the beginning and end of an HTML document, is identified by the
-<code>&lt;html&gt;</code> tag.</p>
+<figure><img src="../fig/simple_website.PNG" alt="Screenshot of a simple website with the previews HTML" class="figure mx-auto d-block"></figure><p>An HTML document is composed of <strong>elements</strong>, which can
+be identified by <strong>tags</strong> written inside angle brackets
+(<code>&lt;</code> and <code>&gt;</code>). For example, the HTML root
+element, which delimits the beginning and end of an HTML document, is
+identified by the <code>&lt;html&gt;</code> tag.</p>
 <p>Most elements have both a opening and a closing tag, determining the
 span of the element. In the previous simple website, we see a head
 element that goes from the opening tag <code>&lt;head&gt;</code> up to
@@ -409,16 +421,19 @@ image shows.</p>
 an HTML document with a tree structure. Source: Wikipedia. Author:
 Birger Eriksson</div>
 </figure><p>Finally, we can define or modify the behavior, appeareance, or
-functionality of an element by using attributes. Attributes are inside
-the opening tag, and consist of a name and a value, formatted as
-<code>name="value"</code>. For example, we can give an unique id to any
-element using the <code>id</code> attribute.</p>
+functionality of an element by using <strong>attributes</strong>.
+Attributes are inside the opening tag, and consist of a name and a
+value, formatted as <code>name="value"</code>. For example, in the
+previous simple website, we added a hyperlink with the
+<code>&lt;a&gt;...&lt;/a&gt;</code> tags, but to set the destination URL
+we used the <code>href</code> attribute by writing in the opening tag
+<code>a href="https://carpentries.org/past_workshops/"</code>.</p>
 <p>Here is a non-exhaustive list of elements you’ll find in HTML and
 their purpose:</p>
 <ul>
 <li>
-<code>&lt;hmtl&gt;...&lt;/html&gt;</code> The root, which contains
-the entirety of the document.</li>
+<code>&lt;hmtl&gt;...&lt;/html&gt;</code> The root element, which
+contains the entirety of the document.</li>
 <li>
 <code>&lt;head&gt;...&lt;/head&gt;</code> Contains metadata, for
 example, the title that the web browser displays.</li>
@@ -450,61 +465,225 @@ HTML content.</li>
 <code>&lt;script&gt;...&lt;/script&gt;</code> Embeds or references
 JavaScript code.</li>
 </ul>
-<p>To summarize, an <em>element</em> is identified by <em>tags</em> ,
-and we can assign properties to an element by using <em>attributes</em>.
-Knowing this about HTML will make our lifes easier when trying to get
-some specific data from a website.</p>
+<p>In the previous list we’ve described some attributes specific for the
+hyperlink elements (<code>&lt;a&gt;</code>) and the image elements
+(<code>&lt;img&gt;</code>), but there are a few other global attributes
+that most HTML elements can have and are useful to identify specific
+elements when doing web scraping:</p>
+<ul>
+<li>
+<code>id=""</code> Assigns a unique identifier to an element, which
+cannot be repeated in the entire HTML document</li>
+<li>
+<code>title=""</code> Provides extra information, displayed as a
+tooltip when the user hovers over the element.</li>
+<li>
+<code>class=""</code> Is used to apply a similar styling to multiple
+elements at once.</li>
+</ul>
+<p>To summarize, an <strong>element</strong> is identified by
+<strong>tags</strong>, and we can assign properties to an element by
+using <strong>attributes</strong>. Knowing this about HTML will make our
+lifes easier when trying to get some specific data from a website.</p>
 </section><section><h2 class="section-heading" id="parsing-html-with-beautifulsoup">Parsing HTML with BeautifulSoup<a class="anchor" aria-label="anchor" href="#parsing-html-with-beautifulsoup"></a>
 </h2>
 <hr class="half-width">
 <p>Now that we know how a website is structured, we can start extracting
-information from it</p>
-<p>This is a lesson created via The Carpentries Workbench. It is written
-in <a href="https://pandoc.org/MANUAL.txt" class="external-link">Pandoc-flavored Markdown</a>
-for static files and <a href="https://rmarkdown.rstudio.com/" class="external-link">R
-Markdown</a> for dynamic files that can render code into output. Please
-refer to the <a href="https://carpentries.github.io/sandpaper-docs/" class="external-link">Introduction to The
-Carpentries Workbench</a> for full documentation.</p>
-<p>What you need to know is that there are three sections required for a
-valid Carpentries lesson:</p>
-<ol style="list-style-type: decimal">
-<li>
-<code>questions</code> are displayed at the beginning of the episode
-to prime the learner for the content.</li>
-<li>
-<code>objectives</code> are the learning objectives for an episode
-displayed with the questions.</li>
-<li>
-<code>keypoints</code> are displayed at the end of the episode to
-reinforce the objectives.</li>
-</ol>
-<div id="accordionInstructor1" class="accordion instructor-note accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
-  <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
-</button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
-<div class="accordion-body">
-<p>Inline instructor notes can help inform instructors of timing
-challenges associated with the lessons. They appear in the “Instructor
-View”</p>
+information from it. The BeautifulSoup package is our main tool for that
+task, as it will parse the HTML so we can search and access the elements
+of interest in a programmatic way.</p>
+<p>To see how this package works, we’ll use the simple website example
+we showed before. As our first step, we will load the BeautifulSoup
+package, along with Pandas.</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre>
 </div>
+<p>Let’s get the HTML content inside a string variable called
+<code>example_html</code></p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>example_html <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="st">&lt;!DOCTYPE html&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="st">&lt;html&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="st">&lt;head&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="st">&lt;title&gt;Sample web page&lt;/title&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="st">&lt;/head&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="st">&lt;body&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="st">&lt;h1&gt;h1 Header #1&lt;/h1&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a><span class="st">&lt;p&gt;This is a paragraph tag&lt;/p&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="st">&lt;h2&gt;h2 Sub-header&lt;/h2&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="st">&lt;p&gt;A new paragraph, now in the &lt;b&gt;sub-header&lt;/b&gt;&lt;/p&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="st">&lt;h1&gt;h1 Header #2&lt;/h1&gt;</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="st">&lt;p&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="st">This other paragraph has two hyperlinks,</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="st">one to &lt;a href="https://carpentries.org/"&gt;The Carpentries homepage&lt;/a&gt;,</span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="st">and another to the</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="st">&lt;a href="https://carpentries.org/past_workshops/"&gt;past workshops&lt;/a&gt; page.</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="st">&lt;/p&gt;</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="st">&lt;/body&gt;</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="st">&lt;/html&gt;</span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="st">"""</span></span></code></pre>
 </div>
+<p>We parse this HTML using the <code>BeautifulSoup()</code> function we
+imported, specifying that we want to use the <code>html.parser</code>.
+This object will represent the document as a nested data structure,
+similar to a tree as we mentioned before. If we use the
+<code>.prettify()</code> method on this object, we can see the nested
+structure, as inner elements will be indented to the right.</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(example_html, <span class="st">'html.parser'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="bu">print</span>(soup.prettify())</span></code></pre>
 </div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;title&gt;
+   Sample web page
+  &lt;/title&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+  &lt;h1&gt;
+   h1 Header #1
+  &lt;/h1&gt;
+  &lt;p&gt;
+   This is a paragraph tag
+  &lt;/p&gt;
+  &lt;h2&gt;
+   h2 Sub-header
+  &lt;/h2&gt;
+  &lt;p&gt;
+   A new paragraph, now in the
+   &lt;b&gt;
+    sub-header
+   &lt;/b&gt;
+  &lt;/p&gt;
+  &lt;h1&gt;
+   h1 Header #2
+  &lt;/h1&gt;
+  &lt;p&gt;
+   This other paragraph has two  hyperlinks, one to
+   &lt;a href="https://carpentries.org/"&gt;
+    The Carpentries homepage
+   &lt;/a&gt;
+   , and another to the
+   &lt;a href="https://carpentries.org/past_workshops/"&gt;
+    past workshops
+   &lt;/a&gt;
+   .
+  &lt;/p&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</code></pre>
 </div>
-<div id="challenge-1-can-you-do-it" class="callout challenge">
+<p>Now that our <code>soup</code> variable holds the parsed document, we
+can use the <code>.find()</code> and <code>.find_all()</code> methods.
+<code>.find()</code> will search the tag that we specify, and return the
+entire element, including the starting and closing tags. If there are
+multiple elements with the same tag, <code>.find()</code> will only
+return the first one. If you want to return all the elements that match
+your search, you’d want to use <code>.find_all()</code> instead, which
+will return them in a list. Additionally, to return the text contained
+in a given element and all its children, you’d use
+<code>.get_text()</code>. Below you can see how all these commands play
+out in our simple website example.</p>
+<div class="codewrapper sourceCode" id="cb6">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"1."</span>, soup.find(<span class="st">'title'</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"2."</span>, soup.find(<span class="st">'title'</span>).get_text())</span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"3."</span>, soup.find(<span class="st">'h1'</span>).get_text())</span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"4."</span>, soup.find_all(<span class="st">'h1'</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"5."</span>, soup.find_all(<span class="st">'a'</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"6."</span>, soup.get_text())</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>1. &lt;title&gt;Sample web page&lt;/title&gt;
+2. Sample web page
+3. h1 Header #1
+4. [&lt;h1&gt;h1 Header #1&lt;/h1&gt;, &lt;h1&gt;h1 Header #2&lt;/h1&gt;]
+5. [&lt;a href="https://carpentries.org/"&gt;The Carpentries homepage&lt;/a&gt;, &lt;a href="https://carpentries.org/past_workshops/"&gt;past workshops&lt;/a&gt;]
+6.
+
+
+
+Sample web page
+
+
+h1 Header #1
+This is a paragraph tag
+h2 Sub-header
+A new paragraph, now in the sub-header
+h1 Header #2
+This other paragraph has two  hyperlinks, one to The Carpentries homepage, and another to the past workshops.
+
+
+
+</code></pre>
+</div>
+<p>How would you extract all hyperlinks identified with
+<code>&lt;a&gt;</code> tags? In our example, we see that there are only
+two hyperlinks, and we could extract them in a list using the
+<code>.find_all('a')</code> method.</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>links <span class="op">=</span> soup.find_all(<span class="st">'a'</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Number of hyperlinks found: "</span>, <span class="bu">len</span>(links))</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="bu">print</span>(links)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Number of hyperlinks found:  2
+[&lt;a href="https://carpentries.org/"&gt;The Carpentries homepage&lt;/a&gt;, &lt;a href="https://carpentries.org/past_workshops/"&gt;past workshops&lt;/a&gt;]</code></pre>
+</div>
+<p>To access the value of a given attribute in an element, for example
+the value of the <code>href</code> attribute in
+<code>&lt;a href=""&gt;</code>, we would use square brackets and the
+name of the attribute (<code>['href']</code>), just like how in a Python
+dictionary we would access the value using the respective key. Let’s
+make a loop that prints only the URL for each hyperlink we have in our
+example.</p>
+<div class="codewrapper sourceCode" id="cb10">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> links:</span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    <span class="bu">print</span>(item[<span class="st">'href'</span>])</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>https://carpentries.org/
+https://carpentries.org/past_workshops/</code></pre>
+</div>
+<div id="challenge1" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
-<div id="challenge-1-can-you-do-it" class="callout-inner">
-<h3 class="callout-title">Challenge 1: Can you do it?</h3>
+<div class="callout-inner">
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
-<p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb2">
-<h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+<p>Create a Python dictionary that has the following three items,
+containing information about the <strong>first</strong> hyperlink in the
+HTML of our example.</p>
+<div class="codewrapper sourceCode" id="cb12">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">paste</span><span class="op">(</span><span class="st">"This"</span>, <span class="st">"new"</span>, <span class="st">"lesson"</span>, <span class="st">"looks"</span>, <span class="st">"good"</span><span class="op">)</span></span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>first_link <span class="op">=</span> {</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>   <span class="st">'element'</span>: the complete hyperlink element,</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>   <span class="st">'url'</span>: the destination url of the hyperlink,</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>   <span class="st">'text'</span>: the text that the website displays <span class="im">as</span> the hyperlink</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>}</span></code></pre>
 </div>
 </div>
 </div>
@@ -512,73 +691,192 @@ View”</p>
 <div id="accordionSolution1" class="accordion challenge-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
-  <h4 class="accordion-header" id="headingSolution1"> Output </h4>
+  <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
 <div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
+<p>One way of completing the exercise is as follows.</p>
+<div class="codewrapper sourceCode" id="cb13">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>first_link <span class="op">=</span> {</span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>   <span class="st">'element'</span>: <span class="bu">str</span>(soup.find(<span class="st">'a'</span>)),</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>   <span class="st">'url'</span>: soup.find(<span class="st">'a'</span>)[<span class="st">'href'</span>],</span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>   <span class="st">'text'</span>: soup.find(<span class="st">'a'</span>).get_text()</span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>}</span></code></pre>
+</div>
+<p>An alternate but similar way is to store the tag found for not
+calling multiple times <code>soup.find('a')</code>, and also creating
+first an empty dictionary and append to it the keys and values we want,
+as this will be useful when we do this multiple times in a for loop.</p>
+<div class="codewrapper sourceCode" id="cb14">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>find_a <span class="op">=</span> soup.find(<span class="st">'a'</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>first_link <span class="op">=</span> {}</span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>first_link[<span class="st">'element'</span>] <span class="op">=</span> <span class="bu">str</span>(find_a)</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>first_link[<span class="st">'url'</span>] <span class="op">=</span> find_a[<span class="st">'href'</span>]</span>
+<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>first_link[<span class="st">'text'</span>] <span class="op">=</span> find_a.get_text()</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>To finish this introduction on HTML and BeautifulSoup, let’s create
+code for extracting in a structured way all the hyperlink elements,
+their destination URL and the text displayed for link. For that, let’s
+use the <code>links</code> variable that we created before as
+<code>links = soup.find_all('a')</code>. We’ll loop over each hyperlink
+element found, storing for each the three pieces of information we want
+in a dictionary, and finally appending that dictionary to a list called
+<code>list_of_dicts</code>. At the end we will have a list with two
+elements, that we can transform to a Pandas dataframe.</p>
+<div class="codewrapper sourceCode" id="cb15">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>links <span class="op">=</span> soup.find_all(<span class="st">'a'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>list_of_dicts <span class="op">=</span> []</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> links:</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>    dict_a <span class="op">=</span> {}</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>    dict_a[<span class="st">'element'</span>] <span class="op">=</span> <span class="bu">str</span>(item)</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>    dict_a[<span class="st">'url'</span>] <span class="op">=</span> item[<span class="st">'href'</span>]</span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>    dict_a[<span class="st">'text'</span>] <span class="op">=</span> item.get_text()</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>    list_of_dicts.append(dict_a)</span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>links_df <span class="op">=</span> pd.DataFrame(list_of_dicts)</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="bu">print</span>(links_df)</span></code></pre>
+</div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>[1] "This new lesson looks good"</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout challenge">
-<div class="callout-square">
-<i class="callout-icon" data-feather="zap"></i>
-</div>
-<div id="challenge-2-how-do-you-nest-solutions-within-challenge-blocks" class="callout-inner">
-<h3 class="callout-title">Challenge 2: how do you nest solutions within challenge blocks?</h3>
-<div class="callout-content">
+<pre class="output" tabindex="0"><code>                                             element  \
+0  &lt;a href="https://carpentries.org/"&gt;The Carpent...
+1  &lt;a href="https://carpentries.org/past_workshop...
 
+                                       url                      text
+0                 https://carpentries.org/  The Carpentries homepage
+1  https://carpentries.org/past_workshops/            past workshops  </code></pre>
 </div>
-</div>
-</div>
-<div id="accordionSolution2" class="accordion challenge-accordion accordion-flush">
-<div class="accordion-item">
-<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
-  <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
-</button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
-<div class="accordion-body">
-<p>You can add a line with at least three colons and a
-<code>solution</code> tag.</p>
-</div>
-</div>
-</div>
-</div>
-</section><section><h2 class="section-heading" id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a>
-</h2>
-<hr class="half-width">
-<p>You can use standard markdown for static figures with the following
-syntax:</p>
-<p><code>![optional caption that appears below the figure](figure url){alt='alt text for accessibility purposes'}</code></p>
-<figure><img src="https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg" alt="Blue Carpentries hex person logo with no text." class="figure mx-auto d-block"><div class="figcaption">You belong in The Carpentries!</div>
-</figure><div id="callout1" class="callout">
+<p>You’ll find more useful information about the BeautifulSoup package
+and how to use all its methods in the <a href="https://beautiful-soup-4.readthedocs.io/en/latest/" class="external-link">Beautiful Soup
+Documentation website</a>.</p>
+<div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
-<i class="callout-icon" data-feather="bell"></i>
+<i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
-<p>Callout sections can highlight information.</p>
-<p>They are sometimes used to emphasise particularly important points
-but are also used in some lessons to present “asides”: content that is
-not central to the narrative of the lesson, e.g. by providing the answer
-to a commonly-asked question.</p>
+<ul>
+<li>Use <code>.md</code> files for episodes when you want static
+content</li>
+<li>Use <code>.Rmd</code> files for episodes when you need to generate
+output</li>
+<li>Run <code>sandpaper::check_lesson()</code> to identify any issues
+with your lesson</li>
+<li>Run <code>sandpaper::build_lesson()</code> to preview your lesson
+locally</li>
+</ul>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="math">Math<a class="anchor" aria-label="anchor" href="#math"></a>
+<!--
+Place links that you need to refer to multiple times across pages here. Delete
+any links that you are not going to use.
+ -->
+</section></section><section id="aio-a-real-website"><p>Content from <a href="a-real-website.html">Scraping a real website</a></p>
+<hr>
+<p>Last updated on 2024-10-28 |
+
+        <a href="https://github.com/josenino95/web-scraping-python/edit/main/episodes/a-real-website.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
+<p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 45 minutes</p>
+<div class="text-end">
+          <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
+        </div>
+<div class="overview card">
+<h2 class="card-header">Overview</h2>
+<div class="row g-0">
+<div class="col-md-4">
+<div class="card-body">
+<div class="inner">
+<h3 class="card-title">Questions</h3>
+<ul>
+<li>How do you write a lesson using Markdown and
+<a href="https://carpentries.github.io/sandpaper/" class="external-link">sandpaper</a>?</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-8">
+<div class="card-body">
+<div class="inner bordered">
+<h3 class="card-title">Objectives</h3>
+<ul>
+<li>Explain how to use markdown with The Carpentries Workbench</li>
+<li>Demonstrate how to include pieces of code, figures, and nested
+challenge blocks</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section><h2 class="section-heading" id="a-requests-to-a-website">A “Requests” to a website<a class="anchor" aria-label="anchor" href="#a-requests-to-a-website"></a>
 </h2>
 <hr class="half-width">
-<p>One of our episodes contains <span class="math inline">\(\LaTeX\)</span> equations when describing how to
-create dynamic reports with {knitr}, so we now use mathjax to describe
-this:</p>
-<p><code>$\alpha = \dfrac{1}{(1 - \beta)^2}$</code> becomes: <span class="math inline">\(\alpha = \dfrac{1}{(1 - \beta)^2}\)</span></p>
-<p>Cool, right?</p>
+<p>In the previous episode we used a simple HTML document, not an actual
+website. Now that we move to more real, complex escenario, we need to
+add another package to our toolbox, the <code>requests</code> package.
+For the purpose of this web scraping lesson, we will only use
+<code>requests</code> to get the HTML behind a website. However, there’s
+a lot of extra functionality that we are not covering but you can find
+in the <a href="https://requests.readthedocs.io/en/latest/" class="external-link">Requests
+package documentation</a>.</p>
+<p>We’ll be scraping The Carpentries website, <a href="https://carpentries.org/" class="external-link">https://carpentries.org/</a>, and the
+list of upcoming and past workshop you can find in there. For that,
+first we’ll load the <code>requests</code> package and then use the code
+<code>.get().text</code> to store the HTML document of the website.</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://carpentries.org/'</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>req <span class="op">=</span> requests.get(url).text</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a><span class="bu">print</span>(req)</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>&lt;!doctype html&gt;
+&lt;html class="no-js" lang="en"&gt;
+&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+	&lt;title&gt;The Carpentries&lt;/title&gt;
+
+    &lt;link rel="stylesheet" type="text/css" href="https://carpentries.org/assets/css/styles_feeling_responsive.css"&gt;
+
+
+
+	&lt;script src="https://carpentries.org/assets/js/modernizr.min.js"&gt;&lt;/script&gt;
+
+        &lt;!-- matomo --&gt;
+        &lt;script src="https://carpentries.org/assets/js/matomo-analytics.js"&gt;&lt;/script&gt;
+
+        &lt;link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i|Roboto:400,400i,700,700i&amp;display=swap" rel="stylesheet"&gt;
+
+	&lt;!-- Search Engine Optimization --&gt;
+	&lt;meta name="description" content="The Carpentries is a fiscally sponsored project of Community Initiatives, a registered 501(c)3 non-profit organisation based in California, USA. We are a global community teaching foundational computational and data science skills to researchers in academia, industry and government."&gt;
+	
+...
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+<p>The output from our previous code was truncated, as it is too long,
+but we can see that it is HTML and has some elements we didn’t see in
+our previous simple example, like those identified with the
+<code>&lt;meta&gt;</code>, <code>&lt;link&gt;</code> and
+<code>&lt;script&gt;</code> tags.</p>
 <div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
@@ -651,8 +949,8 @@ any links that you are not going to use.
   "url": "https://josenino95.github.io/web-scraping-python/instructor/aio.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/instructor/aio.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2024-10-26",
-  "datePublished": "2024-10-26"
+  "dateModified": "2024-10-28",
+  "datePublished": "2024-10-28"
 }
 
   </script><script>
