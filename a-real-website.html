@@ -226,6 +226,7 @@
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" aria-labelledby="flush-headingcurrent" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
         <ul><li><a href="#a-requests-to-a-website">A “Requests” to a website</a></li>
+<li><a href="#navigating-the-tree">Navigating the tree</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
 
@@ -335,10 +336,11 @@ For the purpose of this web scraping lesson, we will only use
 a lot of extra functionality that we are not covering but you can find
 in the <a href="https://requests.readthedocs.io/en/latest/" class="external-link">Requests
 package documentation</a>.</p>
-<p>We’ll be scraping The Carpentries website, <a href="https://carpentries.org/" class="external-link">https://carpentries.org/</a>, and the
-list of upcoming and past workshop you can find in there. For that,
-first we’ll load the <code>requests</code> package and then use the code
-<code>.get().text</code> to store the HTML document of the website.</p>
+<p>We’ll be scraping The Carpentries website, <a href="https://carpentries.org/" class="external-link">https://carpentries.org/</a>, and
+specifically, the list of upcoming and past workshop you can find in
+there. For that, first we’ll load the <code>requests</code> package and
+then use the code <code>.get().text</code> to store the HTML document of
+the website.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -376,11 +378,96 @@ first we’ll load the <code>requests</code> package and then use the code
 &lt;/html&gt;</code></pre>
 </div>
 <p>The output from our previous code was truncated, as it is too long,
-but we can see that it is HTML and has some elements we didn’t see in
-our previous simple example, like those identified with the
+but we can see it is HTML and has some elements we didn’t see in the
+example of the previous episode, like those identified with the
 <code>&lt;meta&gt;</code>, <code>&lt;link&gt;</code> and
 <code>&lt;script&gt;</code> tags.</p>
-<div id="keypoints1" class="callout keypoints">
+<p>There’s another way to see the HTML document behind a website,
+directly from your web browser. Using Google Chrome, you can right-click
+in any part of the website (on a Mac, press and hold the Control key in
+your keyboard while you click), and from the pop-up menu, click ‘View
+page source’, as the next image shows. If the ‘View page source’ option
+didn’t appear for you, try clicking in another part of the website. A
+new tab will open with the HTML document for the website you were
+in.</p>
+<figure><img src="fig/view_page_source.png" alt="A screenshot of The Carpentries homepage in the Google Chrome web browser, showing how to View page source" class="figure mx-auto d-block"></figure><p>In the HTML page source on your browser you can scroll down and look
+for the second-level header (<code>&lt;h2&gt;</code>) with the text
+“Upcoming Carpentries Workshops”. Or more easily, you can use the Find
+Bar (Ctrl + F on Windows and Command + F on Mac) to search for “Upcoming
+Carpentries Workshops”. Just right down of that header we have the table
+element we are interested in, which starts with the opening tag
+<code>&lt;table class="table table-striped" style="width: 100%;"&gt;</code>.
+Inside that element we see nested different elements familiar for a
+table, the rows (<code>&lt;tr&gt;</code>) and the cells for each row
+(<code>&lt;td&gt;</code>), and additionally the image
+(<code>&lt;img&gt;</code>) and hyperlink (<code>&lt;a&gt;</code>)
+elements.</p>
+<p>Now, going back to our coding, we left off on getting the HTML behind
+the website using <code>requests</code>, and stored it on the variable
+called <code>req</code>. From here we can proceed with BeautifulSoup as
+we learned in the previous episode, using the
+<code>BeautifulSoup()</code> function to parse our HTML, as the
+following code block shows. With the parsed document, we can use the
+<code>.find()</code> or <code>find_all()</code> methods to find the
+table element.</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(req, <span class="st">'html.parser'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>tables_by_tag <span class="op">=</span> soup.find_all(<span class="st">'table'</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Number of table elements found: "</span>, <span class="bu">len</span>(tables_by_tag))</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Printing only the first 1000 characters of the table element: </span><span class="ch">\n</span><span class="st">"</span>, <span class="bu">str</span>(tables_by_tag[<span class="dv">0</span>])[<span class="dv">0</span>:<span class="dv">1000</span>])</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>Number of table elements found:  1
+Printing only the first 1000 characters of the table element:
+ &lt;table class="table table-striped" style="width: 100%;"&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;img alt="swc logo" class="flags" height="24" src="https://carpentries.org/assets/img/logos/swc.svg" title="swc workshop" width="24"&gt;
+&lt;/img&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;img alt="mx" class="flags" src="https://carpentries.org/assets/img/flags/24/mx.png" title="MX"&gt;
+&lt;img alt="globe image" class="flags" src="https://carpentries.org/assets/img/flags/24/w3.png" title="Online"&gt;
+&lt;a href="https://galn3x.github.io/-2024-10-28-Metagenomics-online/"&gt;Nodo Nacional de BioinformÃ¡tica UNAM&lt;/a&gt;
+&lt;br&gt;
+&lt;b&gt;Instructors:&lt;/b&gt; CÃ©sar Aguilar, Diana Oaxaca, Nelly Selem-Mojica
+
+
+          &lt;br&gt;
+&lt;b&gt;Helpers:&lt;/b&gt; Andreas Chavez, JosÃ© Manuel Villalobos Escobedo, Aaron Espinosa Jaime, AndrÃ©s Arredondo, Mirna VÃ¡zquez Rosas-Landa, David Alberto GarcÃ­a-Estrada
+
+	&lt;/br&gt;&lt;/br&gt;&lt;/img&gt;&lt;/img&gt;&lt;/td&gt;
+&lt;td&gt;
+		Oct 28 - Oct 31, 2024
+	&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;img alt="dc logo" class="flags" height="24" src="https://carpentries.org/assets/img/logos/dc.svg" title="dc </code></pre>
+</div>
+<p>We can see that there was found only one table element in the entire
+HTML, which corresponds to the table we are looking for. The output you
+see in the previous code block will be different from what you have in
+your computer, as the data in the upcoming workshops table is
+continously being updated.</p>
+<p>Besides searching elements using tags, sometimes it will be useful to
+search using attributes, like <code>id</code> or <code>class</code>. For
+example, we can see the table element has a class attribute with two
+values “table table-striped”, which identifies all possible elements
+with similar styling. Therefore, we could have the same result than
+before using the <code>class_</code> argument on the
+<code>.find_all()</code> method as follows.</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>tables_by_class <span class="op">=</span> soup.find_all(class_<span class="op">=</span><span class="st">"table table-striped"</span>)</span></code></pre>
+</div>
+<p>Now that we know there is only onw table</p>
+</section><section><h2 class="section-heading" id="navigating-the-tree">Navigating the tree<a class="anchor" aria-label="anchor" href="#navigating-the-tree"></a></h2>
+<hr class="half-width"><div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
