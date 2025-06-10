@@ -36,7 +36,7 @@
       <div class="large-logo">
         <img id="incubator-logo" alt="Lesson Description" src="assets/images/incubator-logo.svg"><span class="badge text-bg-danger">
           <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
-            <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link">
+            <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
               <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
               Pre-Alpha
             </a>
@@ -333,71 +333,78 @@
 <section id="hello-scraping"><h2 class="section-heading"><a href="hello-scraping.html">Hello-Scraping</a></h2>
 <hr class="half-width">
 <ul>
-<li>Every website has an HTML document behind it that gives a structure
-to its content.</li>
-<li>An HTML is composed of elements, which usually have a opening
-<code>&lt;tag&gt;</code> and a closing <code>&lt;/tag&gt;</code>.</li>
-<li>Elements can have different properties, assigned by attributes in
-the form of <code>&lt;tag attribute_name="value"&gt;</code>.</li>
-<li>We can parse any HTML document with <code>BeautifulSoup()</code> and
-find elements using the <code>.find()</code> and
-<code>.find_all()</code> methods.</li>
-<li>We can access the text of an element using the
-<code>.get_text()</code> method and the attribute values as we do with
-Python dictionaries (<code>element["attribute_name"]</code>).</li>
-<li>We must be careful to not tresspass the Terms of Service (TOS) of
-the website we are scraping.</li>
+<li>Every website is built on an HTML document that structures its
+content.</li>
+<li>An HTML document is composed of elements, usually defined by an
+opening <code>&lt;tag&gt;</code> and a closing
+<code>&lt;/tag&gt;</code>.</li>
+<li>Elements can have attributes that define their properties, written
+as <code>&lt;tag attribute_name="value"&gt;</code>.</li>
+<li>We can parse an HTML document using <code>BeautifulSoup()</code> and
+search for elements with the <code>.find()</code> and
+<code>.find_all()</code> methods.
+<ul>
+<li>We can extract the text inside an element with
+<code>.get_text()</code> and access attribute values using
+<code>.get("attribute_name")</code>.</li>
+</ul>
+</li>
+<li>Always review and respect a website’s Terms of Service (TOS) before
+scraping its content.</li>
 </ul></section><section id="a-real-website"><h2 class="section-heading"><a href="a-real-website.html">Scraping a real website</a></h2>
 <hr class="half-width">
 <ul>
-<li>We can get the HTML behind any website using the “requests” package
-and the function <code>requests.get('website_url').text</code>.</li>
-<li>An HTML document is a nested tree of elements. Therefore, from a
-given element, we can access its child, parent, or sibling, using
-<code>.contents</code>, <code>.parent</code>,
-<code>.next_sibling</code>, and <code>previous_sibling</code>.</li>
-<li>It’s polite to not send too many requests to a website in a short
-period of time. For that, we can use the <code>sleep()</code> function
-of the built-in Python module <code>time</code>.</li>
+<li>Use the requests package with
+<code>requests.get('website_url').text</code> to retrieve the HTML
+content of any website.</li>
+<li>In your web browser, you can explore the HTML structure and identify
+elements of interest using the “View Page Source” and “Inspect”
+tools.</li>
+<li>An HTML document is a nested tree of elements; navigate it by
+accessing an element’s children (<code>.contents</code>), parent
+(<code>.parent</code>), and siblings (<code>.next_sibling</code>,
+<code>.previous_sibling</code>)</li>
+<li>To avoid overwhelming a website’s server, add delays between
+requests using the <code>sleep()</code> function from Python’s built-in
+<code>time</code> module.</li>
 </ul></section><section id="dynamic-websites"><h2 class="section-heading"><a href="dynamic-websites.html">Dynamic websites</a></h2>
 <hr class="half-width">
 <ul>
-<li>Dynamic websites load content using JavaScript, which isn’t present
-in the initial or source HTML. It’s important to distinguish between
+<li>Dynamic websites load content using JavaScript, so the data may not
+be present in the initial HTML. It’s important to distinguish between
 static and dynamic content when planning your scraping approach.</li>
 <li>The <code>Selenium</code> package and its <code>webdriver</code>
-module simulate a real user interacting with a browser, allowing it to
-execute JavaScript and clicking, scrolling or filling in text
-boxes.</li>
-<li>Here are the commandand we learned when we use
-<code>Selenium</code>:
+module simulates a real browser, allowing you to execute JavaScript and
+interact with the page as a user would —clicking, scrolling, or filling
+out forms</li>
+<li>Key Selenium commands:
 <ul>
 <li>
-<code>webdriver.Chrome()</code> # Start the Google Chrome browser
+<code>webdriver.Chrome()</code>: Launch the Chrome browser
 simulator</li>
 <li>
-<code>.get("website_url")</code> # Go to a given website</li>
+<code>.get("website_url")</code>: Visit a given website</li>
 <li>
 <code>.find_element(by, value)</code> and
-<code>.find_elements(by, value)</code> # Get a given element</li>
+<code>.find_elements(by, value)</code>: Locate one or multiple
+elements</li>
 <li>
-<code>.click()</code> # Click the element selected</li>
+<code>.click()</code>: Click a selected element</li>
 <li>
-<code>.page_source</code> # Get the HTML after JavaScript has
-executed, which can later be parsed with BeautifulSoup</li>
+<code>.page_source</code>: Retrieve the full HTML after JavaScript
+execution</li>
 <li>
-<code>.quit()</code> # Close the browser simulator</li>
+<code>.quit()</code>: Close the browser</li>
 </ul>
 </li>
 <li>The browser’s “Inspect” tool allows users to view the HTML document
-after dynamic content has loaded, revealing elements added by
-JavaScript. This tool helps identify the specific elements you are
-interested in scraping.</li>
-<li>A typical scraping pipeline involves understanding the website’s
-structure, determining content type (static or dynamic), using the
-appropriate tools (requests and BeautifulSoup for static, Selenium and
-BeautifulSoup for dynamic), and structuring the scraped data for
-analysis.</li>
+after dynamic content has loaded. This is useful for identifying which
+elements contain the data you want to scrape.</li>
+<li>A typical web scraping pipeline includes: 1) Understanding the
+website structure; 2) Determining whether content is static or dynamic;
+3) Choosing the right tools (requests + BeautifulSoup or Selenium); 4)
+Extracting and cleaning the data; 5) Storing the data in a structured
+format.</li>
 </ul></section>
 </div>
     </main>
@@ -423,7 +430,7 @@ analysis.</li>
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.10" class="external-link">sandpaper (0.16.10)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.12" class="external-link">sandpaper (0.16.12)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.6" class="external-link">varnish (1.0.6)</a></p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -435,10 +442,10 @@ analysis.</li>
   <script type="application/ld+json">
     {
   "@context": "https://schema.org",
-  "@type": "TrainingMaterial",
+  "@type": "LearningResource",
   "@id": "https://josenino95.github.io/web-scraping-python/key-points.html",
   "inLanguage": "en",
-  "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+  "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "web scraping, data, python, The Carpentries",
   "name": "Key Points",
@@ -446,8 +453,8 @@ analysis.</li>
   "url": "https://josenino95.github.io/web-scraping-python/key-points.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/key-points.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2025-01-07",
-  "datePublished": "2025-01-07"
+  "dateModified": "2025-06-10",
+  "datePublished": "2025-06-10"
 }
 
   </script><script>

@@ -20,7 +20,7 @@
       <div class="large-logo">
         <img id="incubator-logo" alt="Lesson Description" src="../assets/images/incubator-logo.svg"><span class="badge text-bg-danger">
           <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
-            <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link">
+            <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
               <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
               Pre-Alpha
             </a>
@@ -301,8 +301,9 @@ any links that you are not going to use.
  1. <a href="hello-scraping.html">Hello-Scraping</a>
 </td>
 <td>
-What is behind a website and how can I extract its information?<br>What
-is there to consider before I do web scraping?
+What’s behind a website, and how can I extract information from
+it?<br>What ethical and legal considerations should I keep in mind
+before scraping a website?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>00h 50m
@@ -315,7 +316,7 @@ How can I get the data and information from a real website?<br>How can
 I start automating my web scraping tasks?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>01h 45m
+<span class="visually-hidden">Duration: </span>02h 05m
 </td>
 <td>
  3. <a href="dynamic-websites.html">Dynamic websites</a>
@@ -326,7 +327,7 @@ it important to understand these differences when doing web
 scraping?<br>How can I start my own web scraping project?
 </td>
 </tr><tr><td>
-<span class="visually-hidden">Duration: </span>02h 20m
+<span class="visually-hidden">Duration: </span>02h 40m
 </td>
 <td>
 Finish
@@ -339,19 +340,21 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><p>In this workshop you will learn how to extract data from websites,
-what you’d call web scraping, using Python. In Episode 1 we begin by
-reviewing the structure of websites in HTML and how to retrieve
-information from it using your browser and the
-<code>BeautifulSoup</code> package. In Episode 2 we’ll dive deep on how
-to get the HTML behind any website using the <code>requests</code>
-package and how to parse and find information with
-<code>BeautifulSoup</code>. At the end,you’ll learn about the
-differences between static and dynamic webpages, and how to scrape the
-latter with the <code>Selenium</code> package.</p>
-<p>This workshop is designed for participants who already have a basic
-understanding of Python programming. In particular, it’s best to know
-how to:</p>
+      </section><section id="setup"><p>In this workshop, you’ll learn how to extract data from websites
+using Python — a process known as web scraping.</p>
+<p>Episode 1 begins with an introduction to how websites are structured
+using HTML. You’ll learn how to explore this structure using your
+browser and how to extract information from it using the
+<code>BeautifulSoup</code> package.</p>
+<p>In Episode 2, you’ll learn how to retrieve the HTML of a webpage
+using the <code>requests</code> package and continue practicing how to
+parse and extract specific content with <code>BeautifulSoup</code>.</p>
+<p>Toward the end of the workshop, in Episode 3, we’ll explore the
+difference between static and dynamic webpages, and how to scrape
+dynamic content using <code>Selenium</code>.</p>
+<p>This workshop is intended for learners who already have a basic
+understanding of Python. In particular, you should be comfortable
+with:</p>
 <ul><li>Install and import packages and modules</li>
 <li>Use lists and dictionaries</li>
 <li>Use conditional statements (<code>if</code>, <code>else</code>,
@@ -423,7 +426,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.10" class="external-link">sandpaper (0.16.10)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.12" class="external-link">sandpaper (0.16.12)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.6" class="external-link">varnish (1.0.6)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -434,10 +437,10 @@ any links that you are not going to use.
   <script type="application/ld+json">
     {
   "@context": "https://schema.org",
-  "@type": "TrainingMaterial",
+  "@type": "LearningResource",
   "@id": "https://josenino95.github.io/web-scraping-python/instructor/index.html",
   "inLanguage": "en",
-  "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+  "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "web scraping, data, python, The Carpentries",
   "name": "Web Scraping with Python",
@@ -445,8 +448,8 @@ any links that you are not going to use.
   "url": "https://josenino95.github.io/web-scraping-python/instructor/index.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/instructor/index.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2025-01-07",
-  "datePublished": "2025-01-07"
+  "dateModified": "2025-06-10",
+  "datePublished": "2025-06-10"
 }
 
   </script><script>

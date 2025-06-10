@@ -20,7 +20,7 @@
       <div class="large-logo">
         <img id="incubator-logo" alt="Lesson Description" src="../assets/images/incubator-logo.svg"><span class="badge text-bg-danger">
           <abbr title="This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.">
-            <a href="https://cdh.carpentries.org/the-lesson-life-cycle.html#early-development-pre-alpha-through-alpha" class="external-link alert-link">
+            <a href="https://docs.carpentries.org/resources/curriculum/lesson-life-cycle.html" class="external-link alert-link">
               <i aria-hidden="true" class="icon" data-feather="alert-octagon" style="border-radius: 5px"></i>
               Pre-Alpha
             </a>
@@ -302,7 +302,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Hello-Scraping</h1>
-        <p>Last updated on 2024-11-04 |
+        <p>Last updated on 2025-06-10 |
 
         <a href="https://github.com/josenino95/web-scraping-python/edit/main/episodes/hello-scraping.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -323,8 +323,10 @@
 <div class="card-body">
 <div class="inner">
 <h3 class="card-title">Questions</h3>
-<ul><li>What is behind a website and how can I extract its information?</li>
-<li>What is there to consider before I do web scraping?</li>
+<ul><li>What’s behind a website, and how can I extract information from
+it?</li>
+<li>What ethical and legal considerations should I keep in mind before
+scraping a website?</li>
 </ul></div>
 </div>
 </div>
@@ -332,35 +334,34 @@
 <div class="card-body">
 <div class="inner bordered">
 <h3 class="card-title">Objectives</h3>
-<ul><li>Identify the structure and basic components of an HTML
-document.</li>
-<li>Use BeautifulSoup to locate elements, tags, attributes and text in
-an HTML document.</li>
-<li>Understand the situations in which web scraping is not suitable for
-obtaining the desired data.</li>
+<ul><li>Identify the structure and key components of an HTML document.</li>
+<li>Use BeautifulSoup to locate elements, tags, attributes, and text
+within an HTML page.</li>
+<li>Recognize situations where web scraping is inappropriate or not
+permitted for accessing data.</li>
 </ul></div>
 </div>
 </div>
 </div>
 </div>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
-<hr class="half-width"><p>This is part two of an Introduction to Web Scraping workshop we
-offered on February 2024. You can refer to those <a href="https://ucsbcarpentry.github.io/2024-02-27-ucsb-webscraping/" class="external-link">workshop
-materials</a> to have a more gentle introduction to scraping using XPath
-and the <code>Scraper</code> Chrome extension.</p>
-<p>We’ll refresh some of the concepts covered there to have a practical
-understanding of how content/data is structured in a website. For that
-purpose, we’ll see what Hypertext Markup Language (HTML) is and how it
-structures and formats the content using <code>tags</code>. From there,
-we’ll use the BeautifulSoup library to parse the HTML content so we can
-easily search and access elements of the website we are interested in.
-Starting from basic examples, we’ll move to scrape more complex,
-real-life websites.</p>
+<hr class="half-width"><p>This workshop is a continuation of our Introduction to Web Scraping
+workshop. If you’re looking for a gentler introduction that uses XPath
+and the Scraper Chrome extension, take a look at the <a href="https://carpentries-incubator.github.io/lc-webscraping/" class="external-link">workshop
+materials for that workshop</a>.</p>
+<p>Here, we’ll revisit some of those core ideas to build a more hands-on
+understanding of how content and data are structured on the web. We’ll
+start by exploring what HTML (Hypertext Markup Language) is and how it
+uses tags to organize and format content. Then, we’ll introduce the
+BeautifulSoup library to parse HTML and make it easier to search for and
+extract specific elements from a webpage.</p>
+<p>We’ll begin with simple examples and gradually move on to scraping
+more complex, real-world websites.</p>
 </section><section><h2 class="section-heading" id="html-quick-overview">HTML quick overview<a class="anchor" aria-label="anchor" href="#html-quick-overview"></a></h2>
 <hr class="half-width"><p>All websites have a Hypertext Markup Language (HTML) document behind
-them. The following text is HTML for a very simple website, with only
-three sentences. If you look at it, can you imagine how that website
-looks?</p>
+them. Below is an example of HTML for a very simple webpage that
+contains just three sentences. As you look through it, try to imagine
+how the website would appear in a browser.</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">HTML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -379,106 +380,108 @@ looks?</p>
 <span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a>This other paragraph has two hyperlinks,</span>
 <span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>one to <span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://carpentries.org/"</span><span class="dt">&gt;</span>The Carpentries homepage<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span>,</span>
 <span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>and another to the</span>
-<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://carpentries.org/past_workshops/"</span><span class="dt">&gt;</span>past workshops<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> page.</span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://carpentries.org/workshops/past-workshops/"</span><span class="dt">&gt;</span>past workshops<span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span> page.</span>
 <span id="cb1-17"><a href="#cb1-17" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">p</span><span class="dt">&gt;</span></span>
 <span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
 <span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre>
 </div>
-<p>Well, if you put that text in a file with a .html extension, the job
-of your web browser when opening the file will be to interpret that
-(markup) language and display a nicely formatted website.</p>
-<figure><img src="../fig/simple_website.PNG" alt="Screenshot of a simple website with the previews HTML" class="figure mx-auto d-block"></figure><p>An HTML document is composed of <strong>elements</strong>, which can
-be identified by <strong>tags</strong> written inside angle brackets
-(<code>&lt;</code> and <code>&gt;</code>). For example, the HTML root
-element, which delimits the beginning and end of an HTML document, is
-identified by the <code>&lt;html&gt;</code> tag.</p>
-<p>Most elements have both a opening and a closing tag, determining the
-span of the element. In the previous simple website, we see a head
-element that goes from the opening tag <code>&lt;head&gt;</code> up to
-the closing tag <code>&lt;/head&gt;</code>. Given than an element can be
-inside another element, an HTML document has a tree structure, where
-every element is a node that can contain child nodes, like the following
-image shows.</p>
+<p>If you save that text in a file with a .html extension —using a
+simple text editor like Notepad on Windows or TextEdit on macOS— and
+open it in your web browser, the browser will interpret the markup
+language and display a nicely formatted web page.</p>
+<figure><img src="../fig/simple_website.PNG" alt="Screenshot of a simple website with the previews HTML" class="figure mx-auto d-block"></figure><p>When you open an HTML file in your browser, what it’s really doing is
+reading a structured document made up of <strong>elements</strong>, each
+marked by <strong>tags</strong> inside angle brackets (&lt; and &gt;).
+For instance, the HTML root element, which delimits the beginning and
+end of an HTML document, is identified by the <code>&lt;html&gt;</code>
+tag.</p>
+<p>Most elements have both an opening tag and a closing tag, which
+define the start and end of that element. For example, in the simple
+website we looked at earlier, the head element begins with
+<code>&lt;head&gt;</code> and ends with <code>&lt;/head&gt;</code>.</p>
+<p>Because elements can be nested inside one another, an HTML document
+forms a tree structure, where each element is a node that can contain
+child nodes, as illustrated in the image below.</p>
 <figure><img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/DOM-model.svg" alt="Screenshot of a simple website with the previews HTML" class="figure mx-auto d-block"><div class="figcaption">The Document Object Model (DOM) that represents
 an HTML document with a tree structure. Source: Wikipedia. Author:
 Birger Eriksson</div>
-</figure><p>Finally, we can define or modify the behavior, appeareance, or
-functionality of an element by using <strong>attributes</strong>.
-Attributes are inside the opening tag, and consist of a name and a
-value, formatted as <code>name="value"</code>. For example, in the
-previous simple website, we added a hyperlink with the
-<code>&lt;a&gt;...&lt;/a&gt;</code> tags, but to set the destination URL
-we used the <code>href</code> attribute by writing in the opening tag
-<code>a href="https://carpentries.org/past_workshops/"</code>.</p>
-<p>Here is a non-exhaustive list of elements you’ll find in HTML and
-their purpose:</p>
+</figure><p>Finally, we can define or modify the behavior, appearance, or
+functionality of an element using <strong>attributes</strong>.
+Attributes appear inside the opening tag and consist of a name and a
+value, formatted like <code>name="value"</code>.</p>
+<p>For example, in the simple website, we added a hyperlink using the
+<code>&lt;a&gt;...&lt;/a&gt;</code> tags. To specify the destination
+URL, we used the <code>href</code> attribute inside the opening
+<code>&lt;a&gt;</code> tag like this:
+<code>&lt;a href="https://carpentries.org/workshops/past-workshops/"&gt;past workshops&lt;/a&gt;</code>.</p>
+<p>Here is a non-exhaustive list of common HTML elements and their
+purposes:</p>
 <ul><li>
-<code>&lt;hmtl&gt;...&lt;/html&gt;</code> The root element, which
-contains the entirety of the document.</li>
+<code>&lt;hmtl&gt;...&lt;/html&gt;</code>: The root element that
+contains the entire document.</li>
 <li>
-<code>&lt;head&gt;...&lt;/head&gt;</code> Contains metadata, for
-example, the title that the web browser displays.</li>
+<code>&lt;head&gt;...&lt;/head&gt;</code>: Contains metadata such as
+the page title that the browser displays.</li>
 <li>
-<code>&lt;body&gt;...&lt;/body&gt;</code> The content that is going
-to be displayed.</li>
+<code>&lt;body&gt;...&lt;/body&gt;</code>: Contains the content that
+will be shown on the webpage.</li>
 <li>
-<code>&lt;h1&gt;...&lt;/h1&gt;, &lt;h2&gt;...&lt;/h2&gt;, &lt;h3&gt;...&lt;/h3&gt;</code>
-Defines headers of level 1, 2, 3, etc.</li>
+<code>&lt;h1&gt;...&lt;/h1&gt;, &lt;h2&gt;...&lt;/h2&gt;, &lt;h3&gt;...&lt;/h3&gt;</code>:
+Define headers of levels 1, 2, 3, and so on.</li>
 <li>
-<code>&lt;p&gt;...&lt;/p&gt;</code> A paragraph.</li>
+<code>&lt;p&gt;...&lt;/p&gt;</code>: Represents a paragraph.</li>
 <li>
-<code>&lt;a href=""&gt;...&lt;/a&gt;</code> Creates a hyperlink, and
-we provide the destination URL with the <code>href</code>
-attribute.</li>
+<code>&lt;a href=""&gt;...&lt;/a&gt;</code>: Creates a hyperlink;
+the destination URL is set with the href attribute.</li>
 <li>
-<code>&lt;img src="" alt=""&gt;</code> Embedds an image, giving a
-source to the image with the <code>src</code> attribute and specifying
-alternate text with <code>alt</code>.</li>
+<code>&lt;img src="" alt=""&gt;</code>: Embeds an image, with the
+image source specified by <code>src</code> and alternative text provided
+by <code>alt</code>. It doesn’t have an opening tag.</li>
 <li>
-<code>&lt;table&gt;...&lt;/table&gt;, &lt;th&gt;...&lt;/th&gt;, &lt;tr&gt;...&lt;/tr&gt;, &lt;td&gt;...&lt;/td&gt;</code>
-Defines a table, that as children will have a header (defined inside
-<code>th</code>), rows (defined inside <code>tr</code>), and a cell
-inside a row (as <code>td</code>).</li>
+<code>&lt;table&gt;...&lt;/table&gt;, &lt;th&gt;...&lt;/th&gt;, &lt;tr&gt;...&lt;/tr&gt;, &lt;td&gt;...&lt;/td&gt;</code>:
+Define a table structure, with headers (<code>&lt;th&gt;</code>), rows
+(<code>&lt;tr&gt;</code>), and cells (<code>&lt;td&gt;</code>).</li>
 <li>
-<code>&lt;div&gt;...&lt;/div&gt;</code> Is used to group sections of
-HTML content.</li>
+<code>&lt;div&gt;...&lt;/div&gt;</code>: Groups sections of HTML
+content together.</li>
 <li>
-<code>&lt;script&gt;...&lt;/script&gt;</code> Embeds or references
+<code>&lt;script&gt;...&lt;/script&gt;</code>: Embeds or links to
 JavaScript code.</li>
-</ul><p>In the previous list we’ve described some attributes specific for the
-hyperlink elements (<code>&lt;a&gt;</code>) and the image elements
-(<code>&lt;img&gt;</code>), but there are a few other global attributes
-that most HTML elements can have and are useful to identify specific
-elements when doing web scraping:</p>
+</ul><p>In the list above, we mentioned some attributes specific to hyperlink
+(<code>&lt;a&gt;</code>) and image (<code>&lt;img&gt;</code>) elements,
+but there are also several global attributes that most HTML elements can
+have. These are especially useful for identifying elements when web
+scraping:</p>
 <ul><li>
-<code>id=""</code> Assigns a unique identifier to an element, which
-cannot be repeated in the entire HTML document</li>
+<code>id=""</code>: Assigns a unique identifier to an element; this
+ID must be unique within the entire HTML document.</li>
 <li>
-<code>title=""</code> Provides extra information, displayed as a
-tooltip when the user hovers over the element.</li>
+<code>title=""</code>: Provides extra information about the element,
+shown as a tooltip when the user hovers over it.</li>
 <li>
-<code>class=""</code> Is used to apply a similar styling to multiple
-elements at once.</li>
-</ul><p>To summarize, an <strong>element</strong> is identified by
-<strong>tags</strong>, and we can assign properties to an element by
-using <strong>attributes</strong>. Knowing this about HTML will make our
-lifes easier when trying to get some specific data from a website.</p>
+<code>class=""</code>: Applies a common styling or grouping to
+multiple elements at once.</li>
+</ul><p>To summarize: <strong>elements</strong> are identified by
+<strong>tags</strong>, and <strong>attributes</strong> let us assign
+properties or identifiers to those elements. Understanding this
+structure will make it much easier to extract specific data from a
+website.</p>
 </section><section><h2 class="section-heading" id="parsing-html-with-beautifulsoup">Parsing HTML with BeautifulSoup<a class="anchor" aria-label="anchor" href="#parsing-html-with-beautifulsoup"></a></h2>
-<hr class="half-width"><p>Now that we know how a website is structured, we can start extracting
-information from it. The BeautifulSoup package is our main tool for that
-task, as it will parse the HTML so we can search and access the elements
-of interest in a programmatic way.</p>
-<p>To see how this package works, we’ll use the simple website example
-we showed before. As our first step, we will load the BeautifulSoup
-package, along with Pandas.</p>
+<hr class="half-width"><p>Now that we understand how a website is structured, we can begin
+extracting information from it. The <code>BeautifulSoup</code> package
+is our main tool for this task —it parses the HTML so we can
+programmatically search for and access the elements we need.</p>
+<p>To see how BeautifulSoup works, we’ll use the simple website example
+from earlier. As a first step, we’ll load the <code>BeautifulSoup</code>
+package along with Pandas.</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre>
 </div>
-<p>Let’s get the HTML content inside a string variable called
-<code>example_html</code></p>
+<p>Let’s store the HTML content in a string variable named
+<code>example_html</code>.</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -498,18 +501,19 @@ package, along with Pandas.</p>
 <span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="st">This other paragraph has two hyperlinks,</span></span>
 <span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="st">one to &lt;a href="https://carpentries.org/"&gt;The Carpentries homepage&lt;/a&gt;,</span></span>
 <span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a><span class="st">and another to the</span></span>
-<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="st">&lt;a href="https://carpentries.org/past_workshops/"&gt;past workshops&lt;/a&gt; page.</span></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="st">&lt;a href="https://carpentries.org/workshops/past-workshops/"&gt;past workshops&lt;/a&gt; page.</span></span>
 <span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="st">&lt;/p&gt;</span></span>
 <span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="st">&lt;/body&gt;</span></span>
 <span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="st">&lt;/html&gt;</span></span>
 <span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="st">"""</span></span></code></pre>
 </div>
-<p>We parse this HTML using the <code>BeautifulSoup()</code> function we
-imported, specifying that we want to use the <code>html.parser</code>.
-This object will represent the document as a nested data structure,
-similar to a tree as we mentioned before. If we use the
-<code>.prettify()</code> method on this object, we can see the nested
-structure, as inner elements will be indented to the right.</p>
+<p>We parse the HTML by passing it to the <code>BeautifulSoup()</code>
+function, specifying <code>html.parser</code> as the parser. This
+creates an object that represents the document as a nested data
+structure —similar to the tree structure we discussed earlier. Using the
+<code>.prettify()</code> method on this object displays the HTML with
+indentation that reflects its nested structure, making it easier to
+read.</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -551,7 +555,7 @@ structure, as inner elements will be indented to the right.</p>
     The Carpentries homepage
    &lt;/a&gt;
    , and another to the
-   &lt;a href="https://carpentries.org/past_workshops/"&gt;
+   &lt;a href="https://carpentries.org/workshops/past-workshops/"&gt;
     past workshops
    &lt;/a&gt;
    .
@@ -560,16 +564,21 @@ structure, as inner elements will be indented to the right.</p>
 &lt;/html&gt;</code></pre>
 </div>
 <p>Now that our <code>soup</code> variable holds the parsed document, we
-can use the <code>.find()</code> and <code>.find_all()</code> methods.
-<code>.find()</code> will search the tag that we specify, and return the
-entire element, including the starting and closing tags. If there are
-multiple elements with the same tag, <code>.find()</code> will only
-return the first one. If you want to return all the elements that match
-your search, you’d want to use <code>.find_all()</code> instead, which
-will return them in a list. Additionally, to return the text contained
-in a given element and all its children, you’d use
-<code>.get_text()</code>. Below you can see how all these commands play
-out in our simple website example.</p>
+can use the <code>.find()</code> and <code>.find_all()</code> methods to
+search for elements.</p>
+<ul><li><p><code>.find()</code> looks for the first occurrence of a
+specified tag and returns the entire element, including its opening and
+closing tags.</p></li>
+<li><p>If multiple elements share the same tag, <code>.find()</code>
+returns only the first one.</p></li>
+<li><p>To get all matching elements, use <code>.find_all()</code>, which
+returns a list of all elements with the specified tag.</p></li>
+<li><p>To extract just the text inside an element and all its children,
+use the <code>.get_text()</code> method. <code>.find()</code> will
+search the tag that we specify, and return the entire element, including
+the starting and closing tags.</p></li>
+</ul><p>Below, you’ll see examples of how these commands work with our simple
+website.</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -587,10 +596,8 @@ out in our simple website example.</p>
 2. Sample web page
 3. h1 Header #1
 4. [&lt;h1&gt;h1 Header #1&lt;/h1&gt;, &lt;h1&gt;h1 Header #2&lt;/h1&gt;]
-5. [&lt;a href="https://carpentries.org/"&gt;The Carpentries homepage&lt;/a&gt;, &lt;a href="https://carpentries.org/past_workshops/"&gt;past workshops&lt;/a&gt;]
+5. [&lt;a href="https://carpentries.org/"&gt;The Carpentries homepage&lt;/a&gt;, &lt;a href="https://carpentries.org/workshops/past-workshops/"&gt;past workshops&lt;/a&gt;]
 6.
-
-
 
 Sample web page
 
@@ -600,11 +607,11 @@ This is a paragraph tag
 h2 Sub-header
 A new paragraph, now in the sub-header
 h1 Header #2
-This other paragraph has two  hyperlinks, one to The Carpentries homepage, and another to the past workshops.
 
-
-
-</code></pre>
+This other paragraph has two hyperlinks,
+one to The Carpentries homepage,
+and another to the
+past workshops page.</code></pre>
 </div>
 <p>How would you extract all hyperlinks identified with
 <code>&lt;a&gt;</code> tags? In our example, we see that there are only
@@ -621,26 +628,25 @@ two hyperlinks, and we could extract them in a list using the
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>Number of hyperlinks found:  2
-[&lt;a href="https://carpentries.org/"&gt;The Carpentries homepage&lt;/a&gt;, &lt;a href="https://carpentries.org/past_workshops/"&gt;past workshops&lt;/a&gt;]</code></pre>
+[&lt;a href="https://carpentries.org/"&gt;The Carpentries homepage&lt;/a&gt;, &lt;a href="https://carpentries.org/workshops/past-workshops/"&gt;past workshops&lt;/a&gt;]</code></pre>
 </div>
 <p>To access the value of a given attribute in an element, for example
 the value of the <code>href</code> attribute in
-<code>&lt;a href=""&gt;</code>, we would use square brackets and the
-name of the attribute (<code>['href']</code>), just like how in a Python
-dictionary we would access the value using the respective key. Let’s
-make a loop that prints only the URL for each hyperlink we have in our
-example.</p>
+<code>&lt;a href=""&gt;</code>, we would use the <code>.get()</code>
+method with the name of the attribute (i.e. <code>.get('href')</code>).
+Let’s make a loop that prints only the URL for each hyperlink we have in
+our example.</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> links:</span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    <span class="bu">print</span>(item[<span class="st">'href'</span>])</span></code></pre>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>    <span class="bu">print</span>(item.get(<span class="st">'href'</span>))</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>https://carpentries.org/
-https://carpentries.org/past_workshops/</code></pre>
+https://carpentries.org/workshops/past-workshops/</code></pre>
 </div>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
@@ -677,36 +683,41 @@ HTML of our example.</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>first_link <span class="op">=</span> {</span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>   <span class="st">'element'</span>: <span class="bu">str</span>(soup.find(<span class="st">'a'</span>)),</span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>   <span class="st">'url'</span>: soup.find(<span class="st">'a'</span>)[<span class="st">'href'</span>],</span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>   <span class="st">'url'</span>: soup.find(<span class="st">'a'</span>).get(<span class="st">'href'</span>),</span>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>   <span class="st">'text'</span>: soup.find(<span class="st">'a'</span>).get_text()</span>
 <span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>}</span></code></pre>
 </div>
-<p>An alternate but similar way is to store the tag found for not
-calling multiple times <code>soup.find('a')</code>, and also creating
-first an empty dictionary and append to it the keys and values we want,
-as this will be useful when we do this multiple times in a for loop.</p>
+<p>An alternative and often more efficient approach is to first store
+the result of <code>soup.find('a')</code> in a variable, rather than
+calling it multiple times. This makes your code cleaner and avoids
+redundant searches.</p>
+<p>You can also start by creating an empty dictionary and then add
+key-value pairs to it. This is especially useful when you’re extracting
+multiple pieces of information in a loop, as you’ll likely want to build
+up a dictionary of results step by step.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>find_a <span class="op">=</span> soup.find(<span class="st">'a'</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>first_link <span class="op">=</span> {}</span>
 <span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a>first_link[<span class="st">'element'</span>] <span class="op">=</span> <span class="bu">str</span>(find_a)</span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>first_link[<span class="st">'url'</span>] <span class="op">=</span> find_a[<span class="st">'href'</span>]</span>
+<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a>first_link[<span class="st">'url'</span>] <span class="op">=</span> find_a.get(<span class="st">'href'</span>)</span>
 <span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a>first_link[<span class="st">'text'</span>] <span class="op">=</span> find_a.get_text()</span></code></pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>To finish this introduction on HTML and BeautifulSoup, let’s create
-code for extracting in a structured way all the hyperlink elements,
-their destination URL and the text displayed for link. For that, let’s
-use the <code>links</code> variable that we created before as
-<code>links = soup.find_all('a')</code>. We’ll loop over each hyperlink
-element found, storing for each the three pieces of information we want
-in a dictionary, and finally appending that dictionary to a list called
-<code>list_of_dicts</code>. At the end we will have a list with two
-elements, that we can transform to a Pandas dataframe.</p>
+<p>To wrap up this introduction to HTML and BeautifulSoup, let’s write
+code that extracts all hyperlink elements in a structured way —capturing
+each link’s tag, destination URL, and display text.</p>
+<p>We’ll start with the links variable we created earlier:
+<code>links = soup.find_all('a')</code>. Then, we’ll loop through each
+hyperlink element, store the three pieces of information in a
+dictionary, and append each dictionary to a list called
+<code>list_of_dicts</code>. At the end, we’ll have a list containing two
+dictionaries —one for each link— which we can easily convert into a
+Pandas DataFrame.</p>
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -715,7 +726,7 @@ elements, that we can transform to a Pandas dataframe.</p>
 <span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> links:</span>
 <span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>    dict_a <span class="op">=</span> {}</span>
 <span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>    dict_a[<span class="st">'element'</span>] <span class="op">=</span> <span class="bu">str</span>(item)</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>    dict_a[<span class="st">'url'</span>] <span class="op">=</span> item[<span class="st">'href'</span>]</span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>    dict_a[<span class="st">'url'</span>] <span class="op">=</span> item.get(<span class="st">'href'</span>)</span>
 <span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>    dict_a[<span class="st">'text'</span>] <span class="op">=</span> item.get_text()</span>
 <span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>    list_of_dicts.append(dict_a)</span>
 <span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a></span>
@@ -725,33 +736,31 @@ elements, that we can transform to a Pandas dataframe.</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code>                                             element  \
-0  &lt;a href="https://carpentries.org/"&gt;The Carpent...
-1  &lt;a href="https://carpentries.org/past_workshop...
-
-                                       url                      text
-0                 https://carpentries.org/  The Carpentries homepage
-1  https://carpentries.org/past_workshops/            past workshops  </code></pre>
+<pre class="output" tabindex="0"><code>                                             element                                                url                      text
+0  &lt;a href="https://carpentries.org/"&gt;The Carpent...                           https://carpentries.org/  The Carpentries homepage
+1  &lt;a href="https://carpentries.org/workshops/pas...  https://carpentries.org/workshops/past-workshops/            past workshops</code></pre>
 </div>
-<p>You’ll find more useful information about the BeautifulSoup package
-and how to use all its methods in the <a href="https://beautiful-soup-4.readthedocs.io/en/latest/" class="external-link">Beautiful Soup
-Documentation website</a>.</p>
+<p>You can find more detailed information about the BeautifulSoup
+package and its full range of methods in the <a href="https://beautiful-soup-4.readthedocs.io/en/latest/" class="external-link">BeautifulSoup
+Documentation</a>.</p>
 </section><section><h2 class="section-heading" id="the-rights-wrongs-and-legal-barriers-to-scraping">The rights, wrongs, and legal barriers to scraping<a class="anchor" aria-label="anchor" href="#the-rights-wrongs-and-legal-barriers-to-scraping"></a></h2>
-<hr class="half-width"><p>The internet is no longer what it used to be. Once an open and
-boundless source of information, the web has become an invaluable pool
-of data, widely used by companies to train machine learning and
-generative AI models. Now, social media platforms and other website
-owners have either recognized the potential for profit and licensed
-their data or have become overwhelmed by bots crawling their sites and
-straining their server resources.</p>
-<p>For this reason, it’s now more common to see that a website’s Terms
-of Service (TOS) explicitly prohibits web scraping. If we want to avoid
-getting into trouble, we need to carefully check the TOS of your website
-of interest as well as its ‘robots.txt’ file. You should be able to find
-both using your preferred search engine, but you may directly go to the
-latter by appending ‘/robots.txt’ at the root URL of the website
-(e.g. for Facebook you’ll find it in ‘<a href="https://facebook.com/robots.txt" class="external-link uri">https://facebook.com/robots.txt</a>’, not in any other URL
-like ‘<a href="https://facebook.com/user/robots.txt" class="external-link uri">https://facebook.com/user/robots.txt</a>’).</p>
+<hr class="half-width"><p>The internet isn’t as open as it once was. What used to be a vast,
+freely accessible source of information has become a valuable reservoir
+of data —especially for training machine learning and generative AI
+models. In response, many social media platforms and website owners have
+either started monetizing access to their data or taken steps to protect
+their resources from being overwhelmed by automated bots.</p>
+<p>As a result, it’s increasingly common for websites to include
+explicit prohibitions against web scraping in their Terms of Service
+(TOS). To avoid legal or ethical issues, it’s essential to check both
+the TOS and the site’s <code>robots.txt</code> file before scraping.</p>
+<p>You can usually find a site’s <code>robots.txt</code> file by
+appending <code>/robots.txt</code> to the root of the domain—for
+example: <code>https://facebook.com/robots.txt</code> (not
+<code>https://facebook.com/user/robots.txt</code>). Both the TOS and
+<code>robots.txt</code> will help you understand what is allowed and
+what isn’t, so it’s important to review them carefully before
+proceeding.</p>
 <div id="discussion1" class="callout discussion">
 <div class="callout-square">
 <i class="callout-icon" data-feather="message-circle"></i>
@@ -762,91 +771,90 @@ like ‘<a href="https://facebook.com/user/robots.txt" class="external-link uri"
 <p>Visit <a href="https://www.facebook.com/terms.php" class="external-link">Facebook’s Terms
 of Service</a> and its <a href="https://facebook.com/robots.txt" class="external-link">robots.txt file</a>. What do they
 say about web scraping or collecting data using automated means? Compare
-it to <a href="https://redditinc.com/policies/user-agreement-september-25-2023" class="external-link">Reddit’s
+it to <a href="https://redditinc.com/policies/user-agreement" class="external-link">Reddit’s
 TOS</a> and <a href="https://www.reddit.com/robots.txt" class="external-link">Reddit’s
 robots.txt</a>.</p>
 </div>
 </div>
 </div>
-<p>Besides checking the website’s policies, you should also be aware of
-the legislation applicable to your location regarding copyright and data
-privacy laws. If you plan to start harvesting a large amount of data for
-research or commercial purposes, you should probably seek legal advice
-first. If you work in a university, chances are it has a copyright
-office that will help you sort out the legal aspects of your project.
-The university library is often the best place to start looking for help
-on copyright.</p>
-<p>To conclude, here is a brief code of conduct you should consider when
-doing web scraping:</p>
-<ol style="list-style-type: decimal"><li>
-<strong>Ask nicely if you can access the data in another
-way</strong>. If your project requires data from a particular
-organisation, you can try asking them directly if they could provide you
-what you are looking for, or check if they have an API to access the
-data. With some luck, they will have the primary data that they used on
-their website in a structured format, saving you the trouble.</li>
+<p>In addition to reviewing a website’s policies, you should also be
+aware of the laws that apply in your region —especially those related to
+copyright and data privacy. If you’re planning to collect a large amount
+of data for research or commercial purposes, it’s a good idea to seek
+legal advice before proceeding. If you’re affiliated with a university,
+there’s a good chance it has a copyright office or legal team that can
+help you navigate the legal aspects of your project. The university
+library is often a great starting point for finding support and guidance
+on copyright and data use.</p>
+<p>To conclude, here is a brief code of conduct you should keep in mind
+when doing web scraping:</p>
+<ol style="list-style-type: decimal"><li><p><strong>Ask nicely whether you can access the data in another
+way</strong>. If your project relies on data from a particular
+organization, consider reaching out to them directly or checking whether
+they provide an API. With a bit of luck, they might offer the data you
+need in a structured format —saving you time and effort.</p></li>
 <li>
-<strong>Don’t download copies of documents that are clearly not
-public</strong>. For example, academic journal publishers often have
-very strict rules about what you can and what you cannot do with their
-databases. Mass downloading article PDFs is probably prohibited and can
-put you (or at the very least your friendly university librarian) in
-trouble. If your project requires local copies of documents (e.g. for
-text mining projects), special agreements can be reached with the
-publisher. The library is a good place to start investigating something
-like that.</li>
+<p><strong>Don’t download content that’s clearly not
+public</strong>. For example, academic journal publishers often impose
+strict usage restrictions on their databases. Mass-downloading PDFs can
+violate these rules and may get you —or your university librarian— into
+trouble.</p>
+<p>If you need local copies for a legitimate reason (e.g., text mining),
+special agreements may be possible. Your university library is a good
+place to start exploring those options.</p>
+</li>
+<li><p><strong>Check your local legislation</strong>. Many countries
+have laws protecting personal information, such as email addresses or
+phone numbers. Even if this data is visible on a website, scraping it
+could be illegal depending on your jurisdiction (e.g., in
+Australia).</p></li>
+<li><p><strong>Don’t share scraped content illegally</strong>. Scraping
+for personal use is often considered fair use, even when it involves
+copyrighted material. But sharing that data —especially if you don’t
+have the rights to distribute it— can be illegal.</p></li>
+<li><p><strong>Share what you can</strong>. If the scraped data is
+public domain or you’ve been granted permission to share it, consider
+publishing it for others to reuse (e.g., on datahub.io). Also, if you
+wrote a scraper to access it, sharing your code (e.g., on GitHub) can
+help others learn from and build on your work.</p></li>
+<li><p><strong>Publish your own data in a reusable way</strong>. Make it
+easier for others by offering your data in open, software-agnostic
+formats like CSV, JSON, or XML. Include metadata that describes the
+content, origin, and intended use of the data. Ensure it’s accessible
+and searchable by search engines.</p></li>
 <li>
-<strong>Check your local legislation</strong>. For example, certain
-countries have laws protecting personal information such as email
-addresses and phone numbers. Scraping such information, even from
-publicly avaialable web sites, can be illegal (e.g. in Australia).</li>
-<li>
-<strong>Don’t share downloaded content illegally</strong>. Scraping
-for personal purposes is usually OK, even if it is copyrighted
-information, as it could fall under the fair use provision of the
-intellectual property legislation. However, sharing data for which you
-don’t hold the right to share is illegal.</li>
-<li>
-<strong>Share what you can</strong>. If the data you scraped is in
-the public domain or you got permission to share it, then put it out
-there for other people to reuse it (e.g. on datahub.io). If you wrote a
-web scraper to access it, share its code (e.g. on GitHub) so that others
-can benefit from it.</li>
-<li>
-<strong>Publish your own data in a reusable way</strong>. Don’t
-force others to write their own scrapers to get at your data. Use open
-and software-agnostic formats (e.g. JSON, XML), provide metadata (data
-about your data: where it came from, what it represents, how to use it,
-etc.) and make sure it can be indexed by search engines so that people
-can find it.</li>
-<li>
-<strong>Don’t break the Internet</strong>. Not all web sites are
-designed to withstand thousands of requests per second. If you are
-writing a recursive scraper (i.e. that follows hyperlinks), test it on a
-smaller dataset first to make sure it does what it is supposed to do.
-Adjust the settings of your scraper to allow for a delay between
-requests. More on this topic in the next episode.</li>
-</ol><div id="keypoints1" class="callout keypoints">
+<p><strong>Don’t break the Internet</strong>. Some websites can’t
+handle high volumes of requests. If your scraper is recursive (i.e., it
+follows links), test it first on a small subset.</p>
+<p>Be respectful by setting delays between requests and limiting the
+rate of access. You’ll learn more about how to do this in the next
+episode.</p>
+</li>
+</ol><p>Following these guidelines helps ensure that your scraping is
+ethical, legal, and considerate of the broader web ecosystem.</p>
+<div id="keypoints1" class="callout keypoints">
 <div class="callout-square">
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
 <h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
-<ul><li>Every website has an HTML document behind it that gives a structure
-to its content.</li>
-<li>An HTML is composed of elements, which usually have a opening
-<code>&lt;tag&gt;</code> and a closing <code>&lt;/tag&gt;</code>.</li>
-<li>Elements can have different properties, assigned by attributes in
-the form of <code>&lt;tag attribute_name="value"&gt;</code>.</li>
-<li>We can parse any HTML document with <code>BeautifulSoup()</code> and
-find elements using the <code>.find()</code> and
-<code>.find_all()</code> methods.</li>
-<li>We can access the text of an element using the
-<code>.get_text()</code> method and the attribute values as we do with
-Python dictionaries (<code>element["attribute_name"]</code>).</li>
-<li>We must be careful to not tresspass the Terms of Service (TOS) of
-the website we are scraping.</li>
+<ul><li>Every website is built on an HTML document that structures its
+content.</li>
+<li>An HTML document is composed of elements, usually defined by an
+opening <code>&lt;tag&gt;</code> and a closing
+<code>&lt;/tag&gt;</code>.</li>
+<li>Elements can have attributes that define their properties, written
+as <code>&lt;tag attribute_name="value"&gt;</code>.</li>
+<li>We can parse an HTML document using <code>BeautifulSoup()</code> and
+search for elements with the <code>.find()</code> and
+<code>.find_all()</code> methods.
+<ul><li>We can extract the text inside an element with
+<code>.get_text()</code> and access attribute values using
+<code>.get("attribute_name")</code>.</li>
+</ul></li>
+<li>Always review and respect a website’s Terms of Service (TOS) before
+scraping its content.</li>
 </ul></div>
 </div>
 </div>
@@ -890,7 +898,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.10" class="external-link">sandpaper (0.16.10)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.7" class="external-link">pegboard (0.7.7)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.5" class="external-link">varnish (1.0.5)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.12" class="external-link">sandpaper (0.16.12)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.6" class="external-link">varnish (1.0.6)</a></p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -901,10 +909,10 @@ any links that you are not going to use.
   <script type="application/ld+json">
     {
   "@context": "https://schema.org",
-  "@type": "TrainingMaterial",
+  "@type": "LearningResource",
   "@id": "https://josenino95.github.io/web-scraping-python/instructor/hello-scraping.html",
   "inLanguage": "en",
-  "dct:conformsTo": "https://bioschemas.org/profiles/TrainingMaterial/1.0-RELEASE",
+  "dct:conformsTo": "https://bioschemas.org/profiles/LearningResource/1.0-RELEASE",
   "description": "A Carpentries Lesson teaching foundational data and coding skills to researchers worldwide",
   "keywords": "web scraping, data, python, The Carpentries",
   "name": "Hello-Scraping",
@@ -912,8 +920,8 @@ any links that you are not going to use.
   "url": "https://josenino95.github.io/web-scraping-python/instructor/hello-scraping.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/instructor/hello-scraping.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2024-11-04",
-  "datePublished": "2025-01-07"
+  "dateModified": "2025-06-10",
+  "datePublished": "2025-06-10"
 }
 
   </script><script>
