@@ -47,7 +47,7 @@ We will teach Python using the [Jupyter Notebook](https://jupyter.org), a progra
 
 ### Other
 
-a. Follow Miniforge's [download](https://github.com/conda-forge/miniforge?tab=readme-ov-file#download) and [installation](https://github.com/conda-forge/miniforge?tab=readme-ov-file#install) instructions for your respective operating system. If you are using a Windows machine, make sure you mark the option to "Add Miniforge3 to my PATH environment variable".
+a. Follow Miniforge's [download and installation](https://conda-forge.org/download/) and instructions for your respective operating system. If you are using a Windows machine, make sure you mark the option to "Add Miniforge3 to my PATH environment variable".
 b. If you are using Mac or Linux, open the 'Terminal'. If you are using Windows, open the 'Command Prompt' or 'Miniforge Prompt'.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::
