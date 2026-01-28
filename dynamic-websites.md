@@ -162,6 +162,14 @@ print(soup.find(class_='film').prettify())
 </tr>
 ```
 
+:::::::::::::::::::::::::::::::::::::::::::: instructor
+To get film title:
+```python
+title = soup.find(class_='film').find(class_='film-title').get_text()
+print(title)
+```
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 The following code repeats the process of clicking and loading the 2015 data, but now in "headless" mode (meaning the browser runs in the background without opening a visible window).
 After the data loads, the code extracts information from the table one column at a time, using the fact that each column has a unique class attribute.
 Instead of writing traditional for loops to extract the text from each element returned by .find_all(), we use list comprehensions, which provide a more concise way to generate lists.
@@ -189,7 +197,7 @@ awards_lc = [elem.get_text() for elem in soup.find_all(class_="film-awards")]
 
 # For the best picture column, we can't use .get_text() as there is no text
 # Rather, we want to see if there is an <i> tag
-best_picture_lc = ["Yes" if elem.find("i") == None else "No" for elem in soup.find_all(class_="film-best-picture")]
+best_picture_lc = ["No" if elem.find("i") == None else "Yes" for elem in soup.find_all(class_="film-best-picture")]
 
 # Create a dataframe based on the previous lists
 movies_2015 = pd.DataFrame(
@@ -285,7 +293,7 @@ driver.get("https://www.scrapingcourse.com/javascript-rendering")
 sleep(3)
 html = driver.page_source
 
-# Parste the HTML
+# Parse the HTML
 soup = BeautifulSoup(html, 'html.parser')
 # Find all <div> elements that have a 'data-testid' attribute with the value of 'product-item'
 divs = soup.find_all("div", attrs = {'data-testid': 'product-item'})
