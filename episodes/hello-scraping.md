@@ -22,7 +22,7 @@ exercises: 10
 ## Introduction
 
 This workshop is a continuation of our Introduction to Web Scraping workshop.
-If you're looking for a gentler introduction that uses XPath and the Scraper Chrome extension, take a look at the [workshop materials for that workshop](https://carpentries-incubator.github.io/lc-webscraping/).
+If you're looking for a gentler introduction that uses the WebScraper Chrome extension, take a look at the [workshop materials for that workshop](https://bham-carpentries.github.io/bham-introduction-to-webscraping/).
 
 Here, we’ll revisit some of those core ideas to build a more hands-on understanding of how content and data are structured on the web. 
 We’ll start by exploring what HTML (Hypertext Markup Language) is and how it uses tags to organize and format content.
@@ -58,7 +58,7 @@ and another to the
 </html>
 ```
 
-If you save that text in a file with a .html extension —using a simple text editor like Notepad on Windows or TextEdit on macOS— and open it in your web browser, the browser will interpret the markup language and display a nicely formatted web page.
+This text has been saved with a .html extension, [SampleWebpageCode.html](data/SampleWebpageCode.html). If you open it in your web browser, the browser will interpret the markup language and display a nicely formatted web page as below.
 
 ![](fig/simple_website.PNG){alt="Screenshot of a simple website with the previews HTML"}
 
@@ -113,6 +113,15 @@ As a first step, we’ll load the `BeautifulSoup` package along with Pandas.
 from bs4 import BeautifulSoup
 import pandas as pd
 ```
+::::::::::::::::::::::::::::::::::: instructor
+
+Jupyter Lab: 
+
+Right click on cell -> Open Variable Inspector
+
+Shift+Enter - run cell
+
+:::::::::::::::::::::::::::::::::::::::::::::
 
 Let’s store the HTML content in a string variable named `example_html`.
 
@@ -203,6 +212,10 @@ Now that our `soup` variable holds the parsed document, we can use the `.find()`
 `.find()` will search the tag that we specify, and return the entire element, including the starting and closing tags.
 
 Below, you’ll see examples of how these commands work with our simple website.
+
+::::::::::::::::::::::::::::::::: instructor
+For demonstration, leave out numbers and execute one at a time
+::::::::::::::::::::::::::::::::::::::::::::
 
 ```python
 print("1.", soup.find('title'))
@@ -301,15 +314,26 @@ first_link['text'] = find_a.get_text()
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::::: instructor
+Alternative if use links list created in previous section:
+```python
+first_link = {"element":str(links[0]),
+              "url":links[0].get('href'),
+              "text":links[0].get_text()}
+```
+
+NB. Need str on the element otherwise get the BeautifulSoup object not the actual string. Looks ok at this stage but doesn't load into data frame correctly if not a string.
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+
 To wrap up this introduction to HTML and BeautifulSoup, let’s write code that extracts all hyperlink elements in a structured way —capturing each link's tag, destination URL, and display text.
 
 We’ll start with the links variable we created earlier: `links = soup.find_all('a')`.
-Then, we’ll loop through each hyperlink element, store the three pieces of information in a dictionary, and append each dictionary to a list called `list_of_dicts`.
+Then, we’ll loop through each hyperlink element, store the three pieces of information in a dictionary, and append each dictionary to a list called `link_info_list`.
 At the end, we’ll have a list containing two dictionaries —one for each link— which we can easily convert into a Pandas DataFrame.
 
 ```python
 links = soup.find_all('a')
-list_of_dicts = []
+link_info_list = []
 for item in links:
     dict_a = {}
     dict_a['element'] = str(item)
@@ -317,7 +341,7 @@ for item in links:
     dict_a['text'] = item.get_text()
     list_of_dicts.append(dict_a)
 
-links_df = pd.DataFrame(list_of_dicts)
+links_df = pd.DataFrame(link_info_list)
 print(links_df)
 ```
 
@@ -328,6 +352,11 @@ print(links_df)
 ```
 
 You can find more detailed information about the BeautifulSoup package and its full range of methods in the [BeautifulSoup Documentation](https://beautiful-soup-4.readthedocs.io/en/latest/).
+:::::::::::::::::::::::::::::::::::: instructor
+- Much more functionality than shown here
+- Can traverse the tree e.g. parent and sibling functions
+- Also useful for extracting information from any html document e.g. OCR output
+:::::::::::::::::::::::::::::::::::::::::::::::
 
 ## The rights, wrongs, and legal barriers to scraping 
 

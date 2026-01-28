@@ -44,6 +44,11 @@ Additionally, to simplify our navigation through the HTML document, we’ll use 
 You can think of this as a pre-processing or cleaning step.
 While we won’t go into detail here, you can explore more about the topic in this by [Library Carpentry Introduction to Regular Expressions](https://librarycarpentry.org/lc-data-intro/01-regular-expressions.html).
 
+:::::::::::::::::::::::::::::::::: instructor
+- [tqdm](https://tqdm.github.io/) is a Progress Bar library
+- regex: \s* 0 or more spaces
+:::::::::::::::::::::::::::::::::::::::::::::
+
 
 ```python
 # Loading libraries
@@ -106,6 +111,9 @@ Back in our code, we left off after retrieving the HTML behind the website using
 
 Now, we can use the `BeautifulSoup()` function to parse that HTML, just like we did before.
 The code below shows how we create the soup object and use `.find_all()` to locate all the third-level headers (`<h3>`) in the page.
+::::::::::::::::::::::::::::::::::::: instructor
+enumerate() function adds a counter to each item in a list or any other iterable, and returns a list of tuples containing the index position and the element for each element of the iterable. 
+::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```python
 # Parsing the HTML with BeautifulSoup
@@ -148,6 +156,10 @@ Understanding the tree structure of the HTML will help us navigate it and extrac
 Navigating this tree is also something we can do with BeautifulSoup.
 For example, let’s find the parent of the first `<h3>` element using the `.parent` property.
 As expected, this will return the `<div>` element with the class attribute "p-8 mb-5 border".
+::::::::::::::::::::::::::::::::::: intstructor
+Show code below with print(str(div_firsth3)) first
+Then prettify
+:::::::::::::::::::::::::::::::::::::::::::::::
 
 ```python
 # Get the parent of the first h3 element and prettify it
@@ -332,7 +344,7 @@ pastworkshops_df  = pd.DataFrame(workshop_list)
 print('Total number of workshops in the table: ', len(pastworkshops_df))
 
 print('Top 5 of countries by number of workshops held: \n',
-      pastworkshops_df['country'].value_counts().head())
+      pastworkshops_df['country'].value_counts().head()) # head() default = 5
 ```
 
 :::::::::::::::::::::::::::::::::
