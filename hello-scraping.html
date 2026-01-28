@@ -303,7 +303,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Hello-Scraping</h1>
-        <p>Last updated on 2025-06-10 |
+        <p>Last updated on 2026-01-28 |
 
         <a href="https://github.com/josenino95/web-scraping-python/edit/main/episodes/hello-scraping.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -345,8 +345,8 @@ permitted for accessing data.</li>
 </div>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
 <hr class="half-width"><p>This workshop is a continuation of our Introduction to Web Scraping
-workshop. If you’re looking for a gentler introduction that uses XPath
-and the Scraper Chrome extension, take a look at the <a href="https://carpentries-incubator.github.io/lc-webscraping/" class="external-link">workshop
+workshop. If you’re looking for a gentler introduction that uses the
+WebScraper Chrome extension, take a look at the <a href="https://bham-carpentries.github.io/bham-introduction-to-webscraping/" class="external-link">workshop
 materials for that workshop</a>.</p>
 <p>Here, we’ll revisit some of those core ideas to build a more hands-on
 understanding of how content and data are structured on the web. We’ll
@@ -384,10 +384,9 @@ how the website would appear in a browser.</p>
 <span id="cb1-18"><a href="#cb1-18" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">body</span><span class="dt">&gt;</span></span>
 <span id="cb1-19"><a href="#cb1-19" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">html</span><span class="dt">&gt;</span></span></code></pre>
 </div>
-<p>If you save that text in a file with a .html extension —using a
-simple text editor like Notepad on Windows or TextEdit on macOS— and
+<p>This text has been saved with a .html extension, <a href="data/SampleWebpageCode.html">SampleWebpageCode.html</a>. If you
 open it in your web browser, the browser will interpret the markup
-language and display a nicely formatted web page.</p>
+language and display a nicely formatted web page as below.</p>
 <figure><img src="fig/simple_website.PNG" alt="Screenshot of a simple website with the previews HTML" class="figure mx-auto d-block"></figure><p>When you open an HTML file in your browser, what it’s really doing is
 reading a structured document made up of <strong>elements</strong>, each
 marked by <strong>tags</strong> inside angle brackets (&lt; and &gt;).
@@ -479,6 +478,7 @@ package along with Pandas.</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
 <span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre>
 </div>
+
 <p>Let’s store the HTML content in a string variable named
 <code>example_html</code>.</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -578,6 +578,7 @@ search the tag that we specify, and return the entire element, including
 the starting and closing tags.</p></li>
 </ul><p>Below, you’ll see examples of how these commands work with our simple
 website.</p>
+
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -675,7 +676,7 @@ HTML of our example.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>One way of completing the exercise is as follows.</p>
 <div class="codewrapper sourceCode" id="cb13">
@@ -708,6 +709,7 @@ up a dictionary of results step by step.</p>
 </div>
 </div>
 </div>
+
 <p>To wrap up this introduction to HTML and BeautifulSoup, let’s write
 code that extracts all hyperlink elements in a structured way —capturing
 each link’s tag, destination URL, and display text.</p>
@@ -715,23 +717,23 @@ each link’s tag, destination URL, and display text.</p>
 <code>links = soup.find_all('a')</code>. Then, we’ll loop through each
 hyperlink element, store the three pieces of information in a
 dictionary, and append each dictionary to a list called
-<code>list_of_dicts</code>. At the end, we’ll have a list containing two
-dictionaries —one for each link— which we can easily convert into a
+<code>link_info_list</code>. At the end, we’ll have a list containing
+two dictionaries —one for each link— which we can easily convert into a
 Pandas DataFrame.</p>
-<div class="codewrapper sourceCode" id="cb15">
+<div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>links <span class="op">=</span> soup.find_all(<span class="st">'a'</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>list_of_dicts <span class="op">=</span> []</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> links:</span>
-<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a>    dict_a <span class="op">=</span> {}</span>
-<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a>    dict_a[<span class="st">'element'</span>] <span class="op">=</span> <span class="bu">str</span>(item)</span>
-<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a>    dict_a[<span class="st">'url'</span>] <span class="op">=</span> item.get(<span class="st">'href'</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>    dict_a[<span class="st">'text'</span>] <span class="op">=</span> item.get_text()</span>
-<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a>    list_of_dicts.append(dict_a)</span>
-<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a>links_df <span class="op">=</span> pd.DataFrame(list_of_dicts)</span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="bu">print</span>(links_df)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a>links <span class="op">=</span> soup.find_all(<span class="st">'a'</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a>link_info_list <span class="op">=</span> []</span>
+<span id="cb16-3"><a href="#cb16-3" tabindex="-1"></a><span class="cf">for</span> item <span class="kw">in</span> links:</span>
+<span id="cb16-4"><a href="#cb16-4" tabindex="-1"></a>    dict_a <span class="op">=</span> {}</span>
+<span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>    dict_a[<span class="st">'element'</span>] <span class="op">=</span> <span class="bu">str</span>(item)</span>
+<span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>    dict_a[<span class="st">'url'</span>] <span class="op">=</span> item.get(<span class="st">'href'</span>)</span>
+<span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>    dict_a[<span class="st">'text'</span>] <span class="op">=</span> item.get_text()</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>    list_of_dicts.append(dict_a)</span>
+<span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>links_df <span class="op">=</span> pd.DataFrame(link_info_list)</span>
+<span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="bu">print</span>(links_df)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -742,7 +744,11 @@ Pandas DataFrame.</p>
 </div>
 <p>You can find more detailed information about the BeautifulSoup
 package and its full range of methods in the <a href="https://beautiful-soup-4.readthedocs.io/en/latest/" class="external-link">BeautifulSoup
-Documentation</a>.</p>
+Documentation</a>. :::::::::::::::::::::::::::::::::::: instructor -
+Much more functionality than shown here - Can traverse the tree
+e.g. parent and sibling functions - Also useful for extracting
+information from any html document e.g. OCR output
+:::::::::::::::::::::::::::::::::::::::::::::::</p>
 </section><section><h2 class="section-heading" id="the-rights-wrongs-and-legal-barriers-to-scraping">The rights, wrongs, and legal barriers to scraping<a class="anchor" aria-label="anchor" href="#the-rights-wrongs-and-legal-barriers-to-scraping"></a></h2>
 <hr class="half-width"><p>The internet isn’t as open as it once was. What used to be a vast,
 freely accessible source of information has become a valuable reservoir
@@ -901,7 +907,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.18.3" class="external-link">sandpaper (0.18.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.18.4" class="external-link">sandpaper (0.18.4)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -923,8 +929,8 @@ any links that you are not going to use.
   "url": "https://josenino95.github.io/web-scraping-python/hello-scraping.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/hello-scraping.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2025-06-10",
-  "datePublished": "2026-01-21"
+  "dateModified": "2026-01-28",
+  "datePublished": "2026-01-28"
 }
 
   </script><script>

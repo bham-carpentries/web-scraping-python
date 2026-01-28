@@ -303,7 +303,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Scraping a real website</h1>
-        <p>Last updated on 2025-06-10 |
+        <p>Last updated on 2026-01-28 |
 
         <a href="https://github.com/josenino95/web-scraping-python/edit/main/episodes/a-real-website.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -381,6 +381,7 @@ Expressions</a> module <code>re</code> to remove all newline characters
 this as a pre-processing or cleaning step. While we won’t go into detail
 here, you can explore more about the topic in this by <a href="https://librarycarpentry.org/lc-data-intro/01-regular-expressions.html" class="external-link">Library
 Carpentry Introduction to Regular Expressions</a>.</p>
+
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -455,7 +456,12 @@ website using the requests package and storing it in a variable named
 <p>Now, we can use the <code>BeautifulSoup()</code> function to parse
 that HTML, just like we did before. The code below shows how we create
 the soup object and use <code>.find_all()</code> to locate all the
-third-level headers (<code>&lt;h3&gt;</code>) in the page.</p>
+third-level headers (<code>&lt;h3&gt;</code>) in the page.
+::::::::::::::::::::::::::::::::::::: instructor enumerate() function
+adds a counter to each item in a list or any other iterable, and returns
+a list of tuples containing the index position and the element for each
+element of the iterable.
+::::::::::::::::::::::::::::::::::::::::::::::::</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -507,7 +513,9 @@ something we can do with BeautifulSoup. For example, let’s find the
 parent of the first <code>&lt;h3&gt;</code> element using the
 <code>.parent</code> property. As expected, this will return the
 <code>&lt;div&gt;</code> element with the class attribute “p-8 mb-5
-border”.</p>
+border”. ::::::::::::::::::::::::::::::::::: intstructor Show code below
+with print(str(div_firsth3)) first Then prettify
+:::::::::::::::::::::::::::::::::::::::::::::::</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -520,7 +528,7 @@ border”.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler1" aria-expanded="false" aria-controls="collapseSpoiler1">
   <h3 class="accordion-header" id="headingSpoiler1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Python output </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Remember, the output shown here is probably different than yours, as
 the website is continuously updated.</p>
@@ -645,7 +653,7 @@ same.</p>
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
   <h3 class="accordion-header" id="headingSpoiler2">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div> Alternative code </h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -703,7 +711,7 @@ held?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>We can reuse directly the code we wrote before, changing only the URL
 we got the HTML from.</p>
@@ -737,7 +745,7 @@ we got the HTML from.</p>
 <span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Total number of workshops in the table: '</span>, <span class="bu">len</span>(pastworkshops_df))</span>
 <span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a></span>
 <span id="cb10-27"><a href="#cb10-27" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Top 5 of countries by number of workshops held: </span><span class="ch">\n</span><span class="st">'</span>,</span>
-<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a>      pastworkshops_df[<span class="st">'country'</span>].value_counts().head())</span></code></pre>
+<span id="cb10-28"><a href="#cb10-28" tabindex="-1"></a>      pastworkshops_df[<span class="st">'country'</span>].value_counts().head()) <span class="co"># head() default = 5</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -762,7 +770,7 @@ workshops.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Instructors appear to be inside a <code>span</code> element
 identified with the “instructors” class attribute. Similarly for
@@ -922,7 +930,7 @@ scraping process more robust?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>A straightforward Pythonic way to handle errors when accessing URLs
 is to use a <a href="https://docs.python.org/3/tutorial/errors.html" class="external-link">try-except
@@ -1014,7 +1022,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.18.3" class="external-link">sandpaper (0.18.3)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.18.4" class="external-link">sandpaper (0.18.4)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.9" class="external-link">pegboard (0.7.9)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.9" class="external-link">varnish (1.0.9)</a></p>
 		</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -1036,8 +1044,8 @@ any links that you are not going to use.
   "url": "https://josenino95.github.io/web-scraping-python/a-real-website.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/a-real-website.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2025-06-10",
-  "datePublished": "2026-01-21"
+  "dateModified": "2026-01-28",
+  "datePublished": "2026-01-28"
 }
 
   </script><script>
