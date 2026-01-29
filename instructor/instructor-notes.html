@@ -444,10 +444,165 @@ e.g. OCR output</li>
 <a href="a-real-website.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor1"></a>
 </h3>
 <ul>
+<li>Using ‘requests’ package</li>
+<li>Load package</li>
+<li>Get url: <strong>.get(url)</strong>
+</li>
+<li>Get html content: <strong>.text</strong>
+</li>
 <li>
 <a href="https://tqdm.github.io/" class="external-link">tqdm</a> is a Progress Bar
 library</li>
-<li>regex: or more spaces</li>
+<li>regex: \s* means 0 or more spaces</li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor2">
+<a href="a-real-website.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor2"></a>
+</h3>
+<ul>
+<li><p>Truncated so not too long</p></li>
+<li><p>Point out <strong>meta</strong>, <strong>link</strong> and
+<strong>script</strong> tags</p></li>
+<li><p>Look at Upcoming webpage</p></li>
+<li><p>Look at source code</p></li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor3">
+<a href="a-real-website.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor3"></a>
+</h3>
+<ul>
+<li>Difficult to find things</li>
+<li>Search for “Upcoming workshops”</li>
+<li>Take a look - difficult to work out</li>
+<li>Show ‘Inspect’</li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor4">
+<a href="a-real-website.html#headingInstructor4">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor4"></a>
+</h3>
+<ul>
+<li><p>Inspect first workshop location</p></li>
+<li><p>Show <strong>a</strong> tag</p></li>
+<li><p>Show surrounding tags - contained in h3</p></li>
+<li><p>Show expand <strong>div</strong> tags</p></li>
+<li><p>Locate next location link</p></li>
+<li><p>Use BeautifulSoup to parse html</p></li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor5">
+<a href="a-real-website.html#headingInstructor5">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor5"></a>
+</h3>
+<ul>
+<li>Use find_all to get <strong>h3</strong> tags</li>
+<li>enumerate() function adds a counter to each item in a list or any
+other iterable, and returns a list of tuples containing the index
+position and the element for each element of the iterable.</li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor6">
+<a href="a-real-website.html#headingInstructor6">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor6"></a>
+</h3>
+<ul>
+<li>Sometimes useful to search by class</li>
+<li>May allow more specific selection</li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor7">
+<a href="a-real-website.html#headingInstructor7">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor7"></a>
+</h3>
+<ul>
+<li><p>Get students to look for parent of first h3 tag</p></li>
+<li><p>Demonstrate hovering over elements</p></li>
+<li><p>Demonstrate collapsing elements</p></li>
+<li><p><strong>Important</strong> Understanding tree structure</p></li>
+<li><p>parent div has class attribute <strong>p-8 mb-5
+border</strong></p></li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor8">
+<a href="a-real-website.html#headingInstructor8">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor8"></a>
+</h3>
+<ul>
+<li>Show code below with print(str(div_firsth3)) first</li>
+<li>Then prettify</li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor9">
+<a href="a-real-website.html#headingInstructor9">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor9"></a>
+</h3>
+<ul>
+<li><p>Examine output</p></li>
+<li><p>h3 gives link to workshop website</p></li>
+<li><p>Also get extra info - date, format, country etc</p></li>
+<li><p>Can start to extract more information</p></li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor10">
+<a href="a-real-website.html#headingInstructor10">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor10"></a>
+</h3>
+<ul>
+<li><p>Ask - what if we want to find the information for all of the
+workshops?</p></li>
+<li>
+<p>Reuse code for dict_workshop</p>
+<ul>
+<li>change div_firsth3 to item</li>
+</ul>
+</li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor11">
+<a href="a-real-website.html#headingInstructor11">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor11"></a>
+</h3>
+<ul>
+<li><p>All data so far taken from single page</p></li>
+<li><p>Information might be across several pages</p></li>
+<li><p>May need to follow hyperlinks</p></li>
+<li><p>Can loop using request for each link &amp; parse with
+BeautifulSoup</p></li>
+<li><p><strong>Beware</strong> of sending too many requests &amp;
+overloading web server</p></li>
+<li><p>Use <strong>sleep()</strong> function to wait</p></li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor12">
+<a href="a-real-website.html#headingInstructor12">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor12"></a>
+</h3>
+<ul>
+<li><p>Now extract information from each workshop’s website</p></li>
+<li><p>Use links in the ‘upcomingworkshops_df’ DataFrame</p></li>
+<li><p>Use link to first workshop</p></li>
+<li><p>df.loc - access group of rows and cols by label or boolean
+array</p></li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor13">
+<a href="a-real-website.html#headingInstructor13">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor13"></a>
+</h3>
+<ul>
+<li>Follow link to first page</li>
+<li>View source</li>
+<li>Information in ‘head’ not displayed directly on page</li>
+<li>‘meta’ tag - metadata - used by search engines
+<ul>
+<li>contains useful information</li>
+</ul>
+</li>
+<li>Extract metadata for first 5 websites</li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor14">
+<a href="a-real-website.html#headingInstructor14">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor14"></a>
+</h3>
+<ul>
+<li>May get error if web page is unavailable</li>
+<li>requests returns value
+<ul>
+<li>404 if unavailable</li>
+<li>200 if found</li>
+</ul>
+</li>
+<li>Show test for code</li>
 </ul>
 <hr>
 <br></section><section id="dynamic-websites"><h2 class="section-heading"><a href="dynamic-websites.html">Dynamic websites</a></h2>
