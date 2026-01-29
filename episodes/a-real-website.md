@@ -35,12 +35,14 @@ In the previous episode we used a simple HTML document, not an actual website.
 Now that we’re moving into a more realistic and complex scenario, we’ll add another tool to our toolbox: the `requests` package.
 
 :::::::::::::::::::::::::::::::::: instructor
+
 - Using 'requests' package
 - Load package
 - Get url:  **.get(url)**
 - Get html content:   **.text**
 - [tqdm](https://tqdm.github.io/) is a Progress Bar library
 - regex: \\s\* means 0 or more spaces
+
 :::::::::::::::::::::::::::::::::::::::::::::
 
 For this lesson, we’ll use `requests` solely to retrieve the HTML content of a website.
@@ -79,11 +81,13 @@ print(cleaned_req[0:1000])
 ```
 
 ::::::::::::::::::::::::::::::::::::: instructor
+
 - Truncated so not too long
 - Point out **meta**, **link** and **script** tags
 
 - Look at Upcoming webpage
 - Look at source code
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 We truncated the output to show only the first 1000 characters of the document, as it’s too long to display fully.
@@ -96,10 +100,12 @@ If you don’t see that option, try clicking elsewhere on the page. A new tab wi
 ![](fig/view_page_source.png){alt="A screenshot of The Carpentries upcoming workshops website in the Google Chrome web browser, showing how to View page source"}
 
 :::::::::::::::::::::::::::::::::::::: instructor
+
 - Difficult to find things
 - Search for "Upcoming workshops"
 - Take a look - difficult to work out
 - Show 'Inspect'
+
 :::::::::::::::::::::::::::::::::::::::::::::::::
 
 In the HTML page source in your browser, you can scroll down to find the first-level header (`<h1>`) with the text “Upcoming workshops.”
@@ -125,6 +131,7 @@ DevTools offers a suite of tools for inspecting, debugging, and analyzing web pa
 For this workshop, we’ll focus on just one: the "Elements" tab.
 
 :::::::::::::::::::::::::::::::::::::::::::::: instructor
+
 - Inspect first workshop location
 - Show **a** tag
 - Show surrounding tags - contained in h3
@@ -132,6 +139,7 @@ For this workshop, we’ll focus on just one: the "Elements" tab.
 - Locate next location link
 
 - Use BeautifulSoup to parse html
+
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 If you selected the organization name to inspect (as shown in the screenshot), you'll see an anchor (`<a>`) element highlighted in the Elements tab.
@@ -144,8 +152,10 @@ Now, we can use the `BeautifulSoup()` function to parse that HTML, just like we 
 The code below shows how we create the soup object and use `.find_all()` to locate all the third-level headers (`<h3>`) in the page.
 
 ::::::::::::::::::::::::::::::::::::: instructor
+
 - Use find_all to get **h3** tags
 - enumerate() function adds a counter to each item in a list or any other iterable, and returns a list of tuples containing the index position and the element for each element of the iterable. 
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```python
@@ -164,8 +174,10 @@ In our case, we can see the `h3` elements have a class attribute with multiple v
 This set of classes is used to apply styling, and it can help us target all elements that share the same formatting.
 
 ::::::::::::::::::::::::::::::: instructor
+
 - Sometimes useful to search by class
 - May allow more specific selection
+
 ::::::::::::::::::::::::::::::::::::::::::
 
 So instead of selecting all `<h3>` tags directly, we can search for elements with this specific class using the `class_` argument of `.find_all()`, like this:
@@ -180,6 +192,7 @@ This will give us the same elements as before, but demonstrates how to refine yo
 ## Extracting data
 
 :::::::::::::::::::::::::::::::::: instructor
+
 - Get students to look for parent of first h3 tag
 
 - Demonstrate hovering over elements
@@ -188,6 +201,7 @@ This will give us the same elements as before, but demonstrates how to refine yo
 - **Important** Understanding tree structure
 
 - parent div has class attribute **p-8 mb-5 border**
+
 :::::::::::::::::::::::::::::::::::::::::::::
 
 Let’s go back to our web browser. Using the "Inspect" tool, can you identify the parent of the first `<h3>` element?
@@ -207,8 +221,10 @@ For example, let’s find the parent of the first `<h3>` element using the `.par
 As expected, this will return the `<div>` element with the class attribute "p-8 mb-5 border".
 
 ::::::::::::::::::::::::::::::::::: instructor
-Show code below with print(str(div_firsth3)) first
-Then prettify
+
+- Show code below with print(str(div_firsth3)) first
+- Then prettify
+
 :::::::::::::::::::::::::::::::::::::::::::::::
 
 ```python
@@ -278,11 +294,13 @@ Remember, the output shown here is probably different than yours, as the website
 Taking a careful look, we can start to detect where the information we want is located and how to extract it in a structured way.
 
 ::::::::::::::::::::::::::::::: instructor
+
 - Examine output
 - h3 gives link to workshop website
 - Also get extra info - date, format, country etc
 
 - Can start to extract more information
+
 ::::::::::::::::::::::::::::::::::::::::::
 
 We already know the workshop host organization is inside the `<h3>` element, and from there we can also get the hyperlink to that specific workshop’s website.
@@ -302,10 +320,12 @@ dict_workshop['program'] = div_firsth3.get('data-program')
 ```
 
 :::::::::::::::::::::::::::::::::::: instructor
+
 - Ask - what if we want to find the information for all of the workshops? 
 
 - Reuse code for dict_workshop
     - change div_firsth3 to item
+
 :::::::::::::::::::::::::::::::::::::::::::::::
 
 Ok, that's the code for extracting information about the first workshop listed, but what about all other workshops?
@@ -576,12 +596,14 @@ How would you approach handling this kind of error to make your scraping process
 :::::::::::::::::::::::: solution
 
 ::::::::::::::::::::::::::::::::::::::::: instructor
+
 - May get error if web page is unavailable
 - requests returns value
     - 404 if unavailable
     - 200 if found
 
 - Show test for code
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 A straightforward Pythonic way to handle errors when accessing URLs is to use a [try-except block](https://docs.python.org/3/tutorial/errors.html).
