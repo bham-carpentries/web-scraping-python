@@ -40,7 +40,7 @@ Now that we’re moving into a more realistic and complex scenario, we’ll add 
 - Get url:  **.get(url)**
 - Get html content:   **.text**
 - [tqdm](https://tqdm.github.io/) is a Progress Bar library
-- regex: '\s*' means 0 or more spaces
+- regex: \\s\* means 0 or more spaces
 :::::::::::::::::::::::::::::::::::::::::::::
 
 For this lesson, we’ll use `requests` solely to retrieve the HTML content of a website.
@@ -145,7 +145,7 @@ The code below shows how we create the soup object and use `.find_all()` to loca
 
 ::::::::::::::::::::::::::::::::::::: instructor
 - Use find_all to get **h3** tags
-enumerate() function adds a counter to each item in a list or any other iterable, and returns a list of tuples containing the index position and the element for each element of the iterable. 
+- enumerate() function adds a counter to each item in a list or any other iterable, and returns a list of tuples containing the index position and the element for each element of the iterable. 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 ```python
