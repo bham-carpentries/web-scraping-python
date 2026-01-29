@@ -77,6 +77,7 @@ print(cleaned_req[0:1000])
 ```output
 <!doctype html><html class=scroll-smooth lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width"><title>Upcoming workshops | The Carpentries</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel=stylesheet><script defer src=https://cdn.jsdelivr.net/npm/@glidejs/glide@3.5.x></script><script src=https://kit.fontawesome.com/3a6fac633d.js crossorigin=anonymous></script><link rel=stylesheet href=https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css><script src=https://code.jquery.com/jquery-3.7.1.min.js></script><script src=https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js></script><script src=https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js></script><script src=https://cdn.datatables.net/plug-ins/1.13.6/sorting/datetime-moment.js></script><sc
 ```
+
 ::::::::::::::::::::::::::::::::::::: instructor
 - Truncated so not too long
 - Point out **meta**, **link** and **script** tags
@@ -84,6 +85,7 @@ print(cleaned_req[0:1000])
 - Look at Upcoming webpage
 - Look at source code
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
 We truncated the output to show only the first 1000 characters of the document, as it’s too long to display fully.
 Still, we can confirm it’s HTML and notice some elements that weren’t present in the earlier example, such as `<meta>`, `<link>` and `<script>` tags.
 
@@ -505,6 +507,7 @@ cleaned_req = re.sub(r'\s*\n\s*', '', req).strip()
 # Parse the HTML
 soup = BeautifulSoup(cleaned_req, 'html.parser')
 ```
+
 :::::::::::::::::::::::::::::::::::::::::: instructor
 - Follow link to first page
 - View source
