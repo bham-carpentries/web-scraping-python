@@ -20,6 +20,7 @@ exercises: 15
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::: instructor
+
 - Go to films website
 - Select 2015
 - View page source
@@ -29,6 +30,7 @@ exercises: 15
 - Use Inspect to look at Spotlight
 - Requests only accesses original html
 - Need Selenium package
+
 :::::::::::::::::::::::::::::::::::::::::::::
 
 Visit this practice webpage created by Hartley Brody for learning and practicing web scraping:  [https://www.scrapethissite.com/pages/ajax-javascript/](https://www.scrapethissite.com/pages/ajax-javascript/) (but first, read the [terms of use](https://www.scrapethissite.com/faq/)).
@@ -55,12 +57,14 @@ To scrape content that is generated dynamically by JavaScript, we’ll use a dif
 ## Using Selenium to scrape dynamic websites
 
 ::::::::::::::::::::::::::::::::::: instructor
+
 - Selenium
     - for web browser automation
     - behaves like real user, interacting with web page in browser
     - renders web page, loading dynamic content
     - access full html after JavaScript executed
     - can also simulate interactions - e.g. clicking buttons
+    
 ::::::::::::::::::::::::::::::::::::::::::::::
 
 [Selenium](https://www.selenium.dev/) is an open-source project for web browser automation.
