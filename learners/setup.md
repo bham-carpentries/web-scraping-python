@@ -78,6 +78,10 @@ from selenium.webdriver.common.by import By
 import pandas as pd
 ```
 
+## Data
+The html used in Episode 1 and Jupyter notebooks containing the code content can be [downloaded](../episodes/data/PythonWebScrapingFiles.zip).
+The Jupyter notebooks are intended for reference as ideally, you will create your own notebooks as you follow along during the course.
+
 ## Additional resources
 - Mitchell, R. (Ryan E. ). (2024). Web scraping with Python : data extraction from the modern web (3rd edition.). O’Reilly Media, Inc.
 - Chapagain, A. (2023). Hands-On Web Scraping with Python : Extract Quality Data from the Web Using Effective Python Techniques (Second edition.). Packt Publishing.
