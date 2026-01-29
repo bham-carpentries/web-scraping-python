@@ -126,7 +126,7 @@ For this workshop, we’ll focus on just one: the "Elements" tab.
 
 :::::::::::::::::::::::::::::::::::::::::::::: instructor
 - Inspect first workshop location
-- Show '<a>' tag
+- Show **a** tag
 - Show surrounding tags - contained in h3
 - Show expand **div** tags
 - Locate next location link
@@ -206,7 +206,7 @@ Navigating this tree is also something we can do with BeautifulSoup.
 For example, let’s find the parent of the first `<h3>` element using the `.parent` property.
 As expected, this will return the `<div>` element with the class attribute "p-8 mb-5 border".
 
-::::::::::::::::::::::::::::::::::: intstructor
+::::::::::::::::::::::::::::::::::: instructor
 Show code below with print(str(div_firsth3)) first
 Then prettify
 :::::::::::::::::::::::::::::::::::::::::::::::
