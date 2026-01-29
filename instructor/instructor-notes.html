@@ -610,13 +610,119 @@ array</p></li>
 <h3 id="dynamic-websites-headingInstructor1">
 <a href="dynamic-websites.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor1"></a>
 </h3>
-<p>To get film title:</p>
-<div class="codewrapper sourceCode" id="cb8">
+<ul>
+<li><p>Go to films website</p></li>
+<li><p>Select 2015</p></li>
+<li><p>View page source</p></li>
+<li><p>Can you find ‘Spotlight’?</p></li>
+<li><p>JavaScript used to load instructions dynamically</p></li>
+<li><p>Use Inspect to look at Spotlight</p></li>
+<li><p>Requests only accesses original html</p></li>
+<li><p>Need Selenium package</p></li>
+</ul>
+<hr>
+<br><h3 id="dynamic-websites-headingInstructor2">
+<a href="dynamic-websites.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor2"></a>
+</h3>
+<ul>
+<li>Selenium
+<ul>
+<li>for web browser automation</li>
+<li>behaves like real user, interacting with web page in browser</li>
+<li>renders web page, loading dynamic content</li>
+<li>access full html after JavaScript executed</li>
+<li>can also simulate interactions - e.g. clicking buttons</li>
+</ul>
+</li>
+</ul>
+<hr>
+<br><h3 id="dynamic-websites-headingInstructor3">
+<a href="dynamic-websites.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor3"></a>
+</h3>
+<ul>
+<li>webdriver - launch, simulate and interact with web brower through
+code</li>
+<li>By - how locate elements</li>
+</ul>
+<hr>
+<br><h3 id="dynamic-websites-headingInstructor4">
+<a href="dynamic-websites.html#headingInstructor4">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor4"></a>
+</h3>
+<ul>
+<li>Selenium works with other browsers too</li>
+<li>Chrome window will open <strong>don’t close</strong>
+<ul>
+<li>may need to open from bottom toolbar</li>
+<li>Split window to see both</li>
+</ul>
+</li>
+</ul>
+<hr>
+<br><h3 id="dynamic-websites-headingInstructor5">
+<a href="dynamic-websites.html#headingInstructor5">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor5"></a>
+</h3>
+<ul>
+<li>
+<strong>Slide</strong> find instructions</li>
+<li>Inspect to find 2015 tag</li>
+<li>id should be unique so use that</li>
+</ul>
+<hr>
+<br><h3 id="dynamic-websites-headingInstructor6">
+<a href="dynamic-websites.html#headingInstructor6">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor6"></a>
+</h3>
+<ul>
+<li>use .click() method to interact with button</li>
+<li>pause using sleep to give time to load table</li>
+<li>get page source</li>
+<li>close</li>
+</ul>
+<hr>
+<br><h3 id="dynamic-websites-headingInstructor7">
+<a href="dynamic-websites.html#headingInstructor7">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor7"></a>
+</h3>
+<ul>
+<li><p>html_2015 contains dynamically loaded html</p></li>
+<li>
+<p>could use Selenium’s find_element()</p>
+<ul>
+<li>switch back to BeautifulSoup</li>
+</ul>
+</li>
+<li><p>Show Inspect of Spotlight to locate tags</p></li>
+<li><p>To get film title:</p></li>
+</ul>
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>title <span class="op">=</span> soup.find(class_<span class="op">=</span><span class="st">'film'</span>).find(class_<span class="op">=</span><span class="st">'film-title'</span>).get_text()</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="bu">print</span>(title)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>title <span class="op">=</span> soup.find(class_<span class="op">=</span><span class="st">'film'</span>).find(class_<span class="op">=</span><span class="st">'film-title'</span>).get_text()</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="bu">print</span>(title)</span></code></pre>
 </div>
+<hr>
+<br><h3 id="dynamic-websites-headingInstructor8">
+<a href="dynamic-websites.html#headingInstructor8">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor8"></a>
+</h3>
+<ul>
+<li><p>Headless mode - browser runs in background without opening
+window</p></li>
+<li><p>Need to set up option for headless mode</p></li>
+<li><p>Open webpage</p></li>
+<li><p>Click to load 2015 data</p></li>
+<li>
+<p>Extract information from table one column at a time</p>
+<ul>
+<li>Each column has unique class attribute</li>
+</ul>
+</li>
+<li><p>Use list comprehensions to extract data</p></li>
+<li><p>For best picture need to check if element is there</p></li>
+<li><p>Add to dataframe</p></li>
+</ul>
+<hr>
+<br><h3 id="dynamic-websites-headingInstructor9">
+<a href="dynamic-websites.html#headingInstructor9">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor9"></a>
+</h3>
+<p><strong>Slide</strong> to show pipeline steps</p>
 <hr>
 <br></section></section>
 </div>

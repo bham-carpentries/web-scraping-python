@@ -119,11 +119,11 @@
   Web Scraping with Python
 </div>
 
-<aside class="col-md-12 lesson-progress"><div style="width: 78%" class="percentage">
-    78%
+<aside class="col-md-12 lesson-progress"><div style="width: 72%" class="percentage">
+    72%
   </div>
   <div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 78%" aria-valuenow="78" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar incubator" role="progressbar" style="width: 72%" aria-valuenow="72" aria-label="Lesson Progress" aria-valuemin="0" aria-valuemax="100">
     </div>
   </div>
 </aside><div class="container">
@@ -301,7 +301,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Dynamic websites</h1>
-        <p>Last updated on 2026-01-28 |
+        <p>Last updated on 2026-01-29 |
 
         <a href="https://github.com/josenino95/web-scraping-python/edit/main/episodes/dynamic-websites.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -339,6 +339,7 @@ websites.</li>
 </div>
 </div>
 </div>
+
 <p>Visit this practice webpage created by Hartley Brody for learning and
 practicing web scraping: <a href="https://www.scrapethissite.com/pages/ajax-javascript/" class="external-link">https://www.scrapethissite.com/pages/ajax-javascript/</a>
 (but first, read the <a href="https://www.scrapethissite.com/faq/" class="external-link">terms
@@ -409,6 +410,7 @@ Safari, and others. For now, we’ll use Chrome. When you run the
 following line of code, a new Google Chrome window will open. Don’t
 close it, this is the browser that Selenium is controlling to interact
 with the webpage.</p>
+
 <p>Later in the lesson, we’ll learn how to run headless browser
 sessions. Headless means the browser runs in the background without
 opening a visible window or user interface, which is useful for
@@ -424,6 +426,7 @@ to the Oscar winners page, use the <code>.get()</code> method on the
 <span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="co"># Go to a specific website</span></span>
 <span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>driver.get(<span class="st">"https://www.scrapethissite.com/pages/ajax-javascript/"</span>)</span></code></pre>
 </div>
+
 <p>How can we direct Selenium to click the “2015” text so the table for
 that year appears? First, we need to locate that element, similar to how
 we used <code>.find()</code> and <code>.find_all()</code> with
@@ -455,6 +458,7 @@ element directly using:</p>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># Find 2015 element button</span></span>
 <span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>button_2015 <span class="op">=</span> driver.find_element(by<span class="op">=</span>By.ID, value<span class="op">=</span><span class="st">"2015"</span>)</span></code></pre>
 </div>
+
 <p>We’ve located the hyperlink element we need to click to display the
 table for that year, and we’ll use the <code>.click()</code> method to
 interact with it. Since the table takes a couple of seconds to load,
@@ -482,18 +486,19 @@ window Selenium opened using <code>driver.quit()</code>.</p>
 <strong>is the HTML after the dynamic content loaded</strong>. This
 content wasn’t present in the original HTML and wouldn’t be accessible
 if we had used the requests package alone.</p>
+
 <p>While we could continue using Selenium’s <code>.find_element()</code>
 and <code>.find_elements()</code> methods to extract the data, we’ll
 switch back to BeautifulSoup to parse the HTML and locate elements,
 since we already have practice with it. For example, if we search for
 the first element with the class attribute “film” and retrieve its text,
 we’ll see that the HTML now includes the movie “Spotlight.”</p>
-<div class="codewrapper sourceCode" id="cb6">
+<div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># Parse HTML and </span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(html_2015, <span class="st">'html.parser'</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="bu">print</span>(soup.find(class_<span class="op">=</span><span class="st">'film'</span>).prettify())</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># Parse HTML and </span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(html_2015, <span class="st">'html.parser'</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="bu">print</span>(soup.find(class_<span class="op">=</span><span class="st">'film'</span>).prettify())</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -576,7 +581,7 @@ data, and place it inside a loop that goes through each year.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>In addition to looping through each year, the following solution
 changes the code by defining two functions: one that finds and clicks on
@@ -651,7 +656,7 @@ Description.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>To identify the elements that contain the data you need, start by
 using the “Inspect” tool in your browser. The screenshot below shows an
@@ -858,7 +863,7 @@ any links that you are not going to use.
   "url": "https://josenino95.github.io/web-scraping-python/dynamic-websites.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/dynamic-websites.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2026-01-28",
+  "dateModified": "2026-01-29",
   "datePublished": "2026-01-29"
 }
 
