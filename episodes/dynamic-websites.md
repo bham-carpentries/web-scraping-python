@@ -1,7 +1,7 @@
 ---
 title: "Dynamic websites"
 teaching: 30
-exercises: 5
+exercises: 15
 ---
 
 :::::::::::::::::::::::::::::::::::::: questions 
