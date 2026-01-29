@@ -303,7 +303,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Hello-Scraping</h1>
-        <p>Last updated on 2026-01-28 |
+        <p>Last updated on 2026-01-29 |
 
         <a href="https://github.com/josenino95/web-scraping-python/edit/main/episodes/hello-scraping.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -345,8 +345,8 @@ permitted for accessing data.</li>
 </div>
 <section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
 <hr class="half-width"><p>This workshop is a continuation of our Introduction to Web Scraping
-workshop. If you’re looking for a gentler introduction that uses the
-WebScraper Chrome extension, take a look at the <a href="https://bham-carpentries.github.io/bham-introduction-to-webscraping/" class="external-link">workshop
+workshop. If you’re looking for a gentler introduction that uses the Web
+Scraper Chrome extension, take a look at the <a href="https://bham-carpentries.github.io/bham-introduction-to-webscraping/" class="external-link">workshop
 materials for that workshop</a>.</p>
 <p>Here, we’ll revisit some of those core ideas to build a more hands-on
 understanding of how content and data are structured on the web. We’ll
@@ -464,6 +464,8 @@ multiple elements at once.</li>
 properties or identifiers to those elements. Understanding this
 structure will make it much easier to extract specific data from a
 website.</p>
+<p>This <a href="https://www.geeksforgeeks.org/html/html-tags-a-to-z-list/" class="external-link">A to Z
+List</a> gives a comprehensive list of html tags.</p>
 </section><section><h2 class="section-heading" id="parsing-html-with-beautifulsoup">Parsing HTML with BeautifulSoup<a class="anchor" aria-label="anchor" href="#parsing-html-with-beautifulsoup"></a></h2>
 <hr class="half-width"><p>Now that we understand how a website is structured, we can begin
 extracting information from it. The <code>BeautifulSoup</code> package
@@ -513,6 +515,7 @@ structure —similar to the tree structure we discussed earlier. Using the
 <code>.prettify()</code> method on this object displays the HTML with
 indentation that reflects its nested structure, making it easier to
 read.</p>
+
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -628,8 +631,10 @@ two hyperlinks, and we could extract them in a list using the
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code>Number of hyperlinks found:  2
-[&lt;a href="https://carpentries.org/"&gt;The Carpentries homepage&lt;/a&gt;, &lt;a href="https://carpentries.org/workshops/past-workshops/"&gt;past workshops&lt;/a&gt;]</code></pre>
+[&lt;a href="https://carpentries.org/"&gt;The Carpentries homepage&lt;/a&gt;, &lt;a href="https://carpentries.org/workshops/past-workshops/"&gt;past workshops&lt;/a&gt;]
+</code></pre>
 </div>
+
 <p>To access the value of a given attribute in an element, for example
 the value of the <code>href</code> attribute in
 <code>&lt;a href=""&gt;</code>, we would use the <code>.get()</code>
@@ -676,7 +681,7 @@ HTML of our example.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>One way of completing the exercise is as follows.</p>
 <div class="codewrapper sourceCode" id="cb13">
@@ -710,6 +715,7 @@ up a dictionary of results step by step.</p>
 </div>
 </div>
 
+
 <p>To wrap up this introduction to HTML and BeautifulSoup, let’s write
 code that extracts all hyperlink elements in a structured way —capturing
 each link’s tag, destination URL, and display text.</p>
@@ -730,7 +736,7 @@ Pandas DataFrame.</p>
 <span id="cb16-5"><a href="#cb16-5" tabindex="-1"></a>    dict_a[<span class="st">'element'</span>] <span class="op">=</span> <span class="bu">str</span>(item)</span>
 <span id="cb16-6"><a href="#cb16-6" tabindex="-1"></a>    dict_a[<span class="st">'url'</span>] <span class="op">=</span> item.get(<span class="st">'href'</span>)</span>
 <span id="cb16-7"><a href="#cb16-7" tabindex="-1"></a>    dict_a[<span class="st">'text'</span>] <span class="op">=</span> item.get_text()</span>
-<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>    list_of_dicts.append(dict_a)</span>
+<span id="cb16-8"><a href="#cb16-8" tabindex="-1"></a>    link_info_list.append(dict_a)</span>
 <span id="cb16-9"><a href="#cb16-9" tabindex="-1"></a></span>
 <span id="cb16-10"><a href="#cb16-10" tabindex="-1"></a>links_df <span class="op">=</span> pd.DataFrame(link_info_list)</span>
 <span id="cb16-11"><a href="#cb16-11" tabindex="-1"></a><span class="bu">print</span>(links_df)</span></code></pre>
@@ -742,13 +748,17 @@ Pandas DataFrame.</p>
 0  &lt;a href="https://carpentries.org/"&gt;The Carpent...                           https://carpentries.org/  The Carpentries homepage
 1  &lt;a href="https://carpentries.org/workshops/pas...  https://carpentries.org/workshops/past-workshops/            past workshops</code></pre>
 </div>
+
+<p>The dataframe can also be exported as, for example, a .csv file</p>
+<div class="codewrapper sourceCode" id="cb18">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a>links_df.to_csv(<span class="st">'OutputCSV.csv'</span>, index<span class="op">=</span><span class="va">False</span>)</span></code></pre>
+</div>
 <p>You can find more detailed information about the BeautifulSoup
 package and its full range of methods in the <a href="https://beautiful-soup-4.readthedocs.io/en/latest/" class="external-link">BeautifulSoup
-Documentation</a>. :::::::::::::::::::::::::::::::::::: instructor -
-Much more functionality than shown here - Can traverse the tree
-e.g. parent and sibling functions - Also useful for extracting
-information from any html document e.g. OCR output
-:::::::::::::::::::::::::::::::::::::::::::::::</p>
+Documentation</a>.</p>
+
 </section><section><h2 class="section-heading" id="the-rights-wrongs-and-legal-barriers-to-scraping">The rights, wrongs, and legal barriers to scraping<a class="anchor" aria-label="anchor" href="#the-rights-wrongs-and-legal-barriers-to-scraping"></a></h2>
 <hr class="half-width"><p>The internet isn’t as open as it once was. What used to be a vast,
 freely accessible source of information has become a valuable reservoir
@@ -929,8 +939,8 @@ any links that you are not going to use.
   "url": "https://josenino95.github.io/web-scraping-python/hello-scraping.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/hello-scraping.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2026-01-28",
-  "datePublished": "2026-01-28"
+  "dateModified": "2026-01-29",
+  "datePublished": "2026-01-29"
 }
 
   </script><script>

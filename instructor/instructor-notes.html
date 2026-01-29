@@ -346,17 +346,48 @@ any links that you are not going to use.
 <h3 id="hello-scraping-headingInstructor1">
 <a href="hello-scraping.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#hello-scraping-headingInstructor1"></a>
 </h3>
-<p>Jupyter Lab:</p>
-<p>Right click on cell -&gt; Open Variable Inspector</p>
-<p>Shift+Enter - run cell</p>
+<p><strong>Slide</strong> Reminder of what web scraping is</p>
+<p>Remember - may be APIs or tools to download data</p>
+<p><strong>Slide</strong> Overview of html - ask what people think it
+will do - html - uses tags to organise and format content.</p>
+<p><strong>Slide</strong> - showing structure - structured doc,
+<strong>elements</strong> marked by <strong>tags</strong> - attributes -
+modify behaviour, appearance or functionality <strong>Slide</strong>
+list of tags - also in notes</p>
 <hr>
 <br><h3 id="hello-scraping-headingInstructor2">
 <a href="hello-scraping.html#headingInstructor2">Instructor Note</a><a class="anchor" aria-label="anchor" href="#hello-scraping-headingInstructor2"></a>
 </h3>
-<p>For demonstration, leave out numbers and execute one at a time</p>
+<p>Jupyter Lab:</p>
+<p>Right click on cell -&gt; Open Variable Inspector (Jupyter Lab, not
+Notebook)</p>
+<p>Shift+Enter - run cell</p>
 <hr>
 <br><h3 id="hello-scraping-headingInstructor3">
 <a href="hello-scraping.html#headingInstructor3">Instructor Note</a><a class="anchor" aria-label="anchor" href="#hello-scraping-headingInstructor3"></a>
+</h3>
+<ul>
+<li>Parse html using BeautifulSoup</li>
+<li>Creates object with nested structure</li>
+<li>Show without prettify first</li>
+</ul>
+<hr>
+<br><h3 id="hello-scraping-headingInstructor4">
+<a href="hello-scraping.html#headingInstructor4">Instructor Note</a><a class="anchor" aria-label="anchor" href="#hello-scraping-headingInstructor4"></a>
+</h3>
+<p>For demonstration, leave out numbers and execute one at a time</p>
+<hr>
+<br><h3 id="hello-scraping-headingInstructor5">
+<a href="hello-scraping.html#headingInstructor5">Instructor Note</a><a class="anchor" aria-label="anchor" href="#hello-scraping-headingInstructor5"></a>
+</h3>
+<ul>
+<li>use .get() to access attribute value</li>
+<li>attribute name as parameter</li>
+<li>.get(‘href’)</li>
+</ul>
+<hr>
+<br><h3 id="hello-scraping-headingInstructor6">
+<a href="hello-scraping.html#headingInstructor6">Instructor Note</a><a class="anchor" aria-label="anchor" href="#hello-scraping-headingInstructor6"></a>
 </h3>
 <p>Alternative if use links list created in previous section:</p>
 <div class="codewrapper sourceCode" id="cb15">
@@ -369,6 +400,43 @@ any links that you are not going to use.
 <p>NB. Need str on the element otherwise get the BeautifulSoup object
 not the actual string. Looks ok at this stage but doesn’t load into data
 frame correctly if not a string.</p>
+<hr>
+<br><h3 id="hello-scraping-headingInstructor7">
+<a href="hello-scraping.html#headingInstructor7">Instructor Note</a><a class="anchor" aria-label="anchor" href="#hello-scraping-headingInstructor7"></a>
+</h3>
+<ul>
+<li>Wrap up BeautifulSoup intro</li>
+<li>Code to:
+<ul>
+<li>Extract all hyperlink elements in structured way</li>
+<li>tag, url &amp; display text</li>
+</ul>
+</li>
+<li>Use <strong>links</strong> list already created</li>
+</ul>
+<hr>
+<br><h3 id="hello-scraping-headingInstructor8">
+<a href="hello-scraping.html#headingInstructor8">Instructor Note</a><a class="anchor" aria-label="anchor" href="#hello-scraping-headingInstructor8"></a>
+</h3>
+<ul>
+<li>Create DataFrame column titles:
+<ul>
+<li>links_df = pd.DataFrame(link_info_list, columns = [‘element’,
+‘url’,‘text’])</li>
+</ul>
+</li>
+<li>index - Write row names, default True</li>
+</ul>
+<hr>
+<br><h3 id="hello-scraping-headingInstructor9">
+<a href="hello-scraping.html#headingInstructor9">Instructor Note</a><a class="anchor" aria-label="anchor" href="#hello-scraping-headingInstructor9"></a>
+</h3>
+<ul>
+<li>Much more functionality than shown here</li>
+<li>Can traverse the tree e.g. parent and sibling functions</li>
+<li>Also useful for extracting information from any html document
+e.g. OCR output</li>
+</ul>
 <hr>
 <br></section><section id="a-real-website"><h2 class="section-heading"><a href="a-real-website.html">Scraping a real website</a></h2>
 <hr class="half-width">
@@ -445,8 +513,8 @@ library</li>
   "url": "https://josenino95.github.io/web-scraping-python/instructor/instructor-notes.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/instructor/instructor-notes.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2026-01-28",
-  "datePublished": "2026-01-28"
+  "dateModified": "2026-01-29",
+  "datePublished": "2026-01-29"
 }
 
   </script><script>
