@@ -1,6 +1,6 @@
 ---
 title: "Hello-Scraping"
-teaching: 40
+teaching: 30
 exercises: 10
 ---
 
