@@ -9,5 +9,5 @@
 "episodes/dynamic-websites.md" "fe3a7fda2890fa9e6355bab099fc9de9" "site/built/dynamic-websites.md" "2026-01-29"
 "instructors/instructor-notes.md" "cae72b6712578d74a49fea7513099f8c" "site/built/instructor-notes.md" "2024-09-23"
 "learners/reference.md" "1c7cc4e229304d9806a13f69ca1b8ba4" "site/built/reference.md" "2024-09-23"
-"learners/setup.md" "054897dd11fd84ea9a0e4eb874eb2472" "site/built/setup.md" "2026-01-28"
+"learners/setup.md" "fd80531b7af292a71b3520190b6fe8a5" "site/built/setup.md" "2026-01-29"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2024-09-23"
