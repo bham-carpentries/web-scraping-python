@@ -437,44 +437,9 @@ If you’re planning to collect a large amount of data for research or commercia
 If you’re affiliated with a university, there’s a good chance it has a copyright office or legal team that can help you navigate the legal aspects of your project.
 The university library is often a great starting point for finding support and guidance on copyright and data use.
 
-To conclude, here is a brief code of conduct you should keep in mind when doing web scraping:
+For more information on the ethics and legality of web scraping please look at the materials from the Introduction to Web Scraping [Ethics and Legality of Web Scraping page](https://bham-carpentries.github.io/bham-introduction-to-webscraping/Legal-ethics.html). **It is very important to ensure that you are clear about the legality of your web scraping activity and also how you are allowed to use the data that is scraped.**
 
-
-1. **Ask nicely whether you can access the data in another way**.
-If your project relies on data from a particular organization, consider reaching out to them directly or checking whether they provide an API.
-With a bit of luck, they might offer the data you need in a structured format —saving you time and effort.
-
-1.  **Don’t download content that’s clearly not public**.
-For example, academic journal publishers often impose strict usage restrictions on their databases. 
-Mass-downloading PDFs can violate these rules and may get you —or your university librarian— into trouble.
-
-    If you need local copies for a legitimate reason (e.g., text mining), special agreements may be possible.
-Your university library is a good place to start exploring those options.
-
-1. **Check your local legislation**.
-Many countries have laws protecting personal information, such as email addresses or phone numbers.
-Even if this data is visible on a website, scraping it could be illegal depending on your jurisdiction (e.g., in Australia).
-
-1. **Don’t share scraped content illegally**.
-Scraping for personal use is often considered fair use, even when it involves copyrighted material. But sharing that data —especially if you don’t have the rights to distribute it— can be illegal.
-
-1. **Share what you can**.
-If the scraped data is public domain or you’ve been granted permission to share it, consider publishing it for others to reuse (e.g., on datahub.io).
-Also, if you wrote a scraper to access it, sharing your code (e.g., on GitHub) can help others learn from and build on your work.
-
-1. **Publish your own data in a reusable way**.
-Make it easier for others by offering your data in open, software-agnostic formats like CSV, JSON, or XML. 
-Include metadata that describes the content, origin, and intended use of the data.
-Ensure it’s accessible and searchable by search engines.
-
-1.  **Don’t break the Internet**.
-Some websites can’t handle high volumes of requests.
-If your scraper is recursive (i.e., it follows links), test it first on a small subset.
-
-    Be respectful by setting delays between requests and limiting the rate of access.
-You’ll learn more about how to do this in the next episode.
-
-Following these guidelines helps ensure that your scraping is ethical, legal, and considerate of the broader web ecosystem.
+More information about copyright and text and data mining can be found on the University’s [Copyright for researchers pages](https://intranet.birmingham.ac.uk/student/libraries/copyright/researchers/index.aspx). 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
@@ -483,6 +448,6 @@ Following these guidelines helps ensure that your scraping is ethical, legal, an
 - Elements can have attributes that define their properties, written as `<tag attribute_name="value">`.
 - We can parse an HTML document using `BeautifulSoup()` and search for elements with the `.find()` and `.find_all()` methods.
     - We can extract the text inside an element with `.get_text()` and access attribute values using `.get("attribute_name")`.
-- Always review and respect a website’s Terms of Service (TOS) before scraping its content.
+- When web scraping you need to consider copyright, database rights, data protection and website terms.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
