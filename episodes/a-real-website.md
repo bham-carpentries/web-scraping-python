@@ -229,8 +229,8 @@ As expected, this will return the `<div>` element with the class attribute "p-8 
 
 ```python
 # Get the parent of the first h3 element and prettify it
-div_firsth3 = h3_by_class[0].parent
-print(div_firsth3.prettify())
+firsth3_parent = h3_by_class[0].parent
+print(firsth3_parent.prettify())
 ```
 :::::::::::::::::::::::::::::::::::::::::: spoiler
 ### Python output
@@ -311,12 +311,12 @@ As shown in the previous episode, we can store all this information in a Python 
 ```python
 # Create an empty dictionary and fill it with the info we are interested in
 dict_workshop = {}
-dict_workshop['host'] = div_firsth3.find('h3').get_text()
-dict_workshop['link'] = div_firsth3.find('h3').find('a').get('href')
-dict_workshop['curriculum'] = div_firsth3.get('data-curriculum')
-dict_workshop['country'] = div_firsth3.get('data-country')
-dict_workshop['format'] = div_firsth3.get('data-meeting')
-dict_workshop['program'] = div_firsth3.get('data-program')
+dict_workshop['host'] = firsth3_parent.find('h3').get_text()
+dict_workshop['link'] = firsth3_parent.find('h3').find('a').get('href')
+dict_workshop['curriculum'] = firsth3_parent.get('data-curriculum')
+dict_workshop['country'] = firsth3_parent.get('data-country')
+dict_workshop['format'] = firsth3_parent.get('data-meeting')
+dict_workshop['program'] = firsth3_parent.get('data-program')
 ```
 
 :::::::::::::::::::::::::::::::::::: instructor
@@ -324,7 +324,7 @@ dict_workshop['program'] = div_firsth3.get('data-program')
 - Ask - what if we want to find the information for all of the workshops? 
 
 - Reuse code for dict_workshop
-    - change div_firsth3 to item
+    - change firsth3_parent to item when reuse
 
 :::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -343,11 +343,11 @@ workshop_list = []
 for item in divs: 
     dict_workshop = {}
     dict_workshop['host'] = item.find('h3').get_text()
-    dict_workshop['link'] = div_firsth3.find('h3').find('a').get('href')
-    dict_workshop['curriculum'] = div_firsth3.get('data-curriculum')
-    dict_workshop['country'] = div_firsth3.get('data-country')
-    dict_workshop['format'] = div_firsth3.get('data-meeting')
-    dict_workshop['program'] = div_firsth3.get('data-program')
+    dict_workshop['link'] = item.find('h3').find('a').get('href')
+    dict_workshop['curriculum'] = item.get('data-curriculum')
+    dict_workshop['country'] = item.get('data-country')
+    dict_workshop['format'] = item.get('data-meeting')
+    dict_workshop['program'] = item.get('data-program')
     workshop_list.append(dict_workshop)
 
 # Transform list into a DataFrame
@@ -394,7 +394,7 @@ A key takeaway from this exercise is that, when we want to scrape data in a stru
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-Extract the same information as in the previous exercise, but this time from the Past Workshops Page at [https://carpentries.org/past_workshops/](https://carpentries.org/past_workshops/).
+Extract the same information as in the previous exercise, but this time from the Past Workshops Page at [https://carpentries.org/workshops/past-workshops/](https://carpentries.org/workshops/past-workshops/).
 Which 5 countries have held the most workshops, and how many has each held?
 
 :::::::::::::::::::::::: solution
@@ -612,7 +612,7 @@ This allows you to catch any exceptions that occur when trying to access a URL, 
 A cleaner approach is to check the actual HTTP response code returned by the `requests` call. A status code of 200 means the request was successful and the page exists. For any other response code, you can choose to skip scraping that page and optionally log the code for review.
 
 ```python
-req = requests.get(url)
+response = requests.get(url)
 status_code = response.status_code
 
 if status_code == 200:
