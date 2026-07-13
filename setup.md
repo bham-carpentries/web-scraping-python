@@ -11,6 +11,8 @@ In Episode 2, you’ll learn how to retrieve the HTML of a webpage using the `re
 
 Toward the end of the workshop, in Episode 3, we’ll explore the difference between static and dynamic webpages, and how to scrape dynamic content using `Selenium`.
 
+It is very important that the legal and ethical considerations accompanying any web scraping activity are considered. This is covered in detail by University of Birmingham library staff in the [Introduction to Web Scraping course](https://bham-carpentries.github.io/bham-introduction-to-webscraping/). For reference Episode 4 contains the material for the topic from that course but, due to time constraints, is not presented in the workshop.
+
 This workshop is intended for learners who already have a basic understanding of Python. In particular, you should be comfortable with:
 
 - Install and import packages and modules
