@@ -25,10 +25,12 @@ exercises: 10
 
 **Slide** Reminder of what web scraping is
 
-Remember - may be APIs or tools to download data
+**Slide** Remember - may be APIs or tools to download data
 
 **Slide** Overview of html - ask what people think it will do
 - html - uses tags to organise and format content.
+- Show in browser
+- Show source code for page
 
 **Slide** - showing structure
 - structured doc, **elements** marked by **tags**
@@ -137,6 +139,8 @@ Jupyter Lab:
 Right click on cell -> Open Variable Inspector (Jupyter Lab, not Notebook)
 
 Shift+Enter - run cell
+
+NB - can copy html text from web source code
 
 :::::::::::::::::::::::::::::::::::::::::::::
 
@@ -300,8 +304,8 @@ To access the value of a given attribute in an element, for example the value of
 Let's make a loop that prints only the URL for each hyperlink we have in our example.
 
 ```python
-for item in links:
-    print(item.get('href'))
+for link in links:
+    print(link.get('href'))
 ```
 ```output
 https://carpentries.org/
@@ -376,11 +380,11 @@ At the end, we’ll have a list containing two dictionaries —one for each link
 ```python
 links = soup.find_all('a')
 link_info_list = []
-for item in links:
+for link in links:
     dict_a = {}
-    dict_a['element'] = str(item)
-    dict_a['url'] = item.get('href')
-    dict_a['text'] = item.get_text()
+    dict_a['element'] = str(link)
+    dict_a['url'] = link.get('href')
+    dict_a['text'] = link.get_text()
     link_info_list.append(dict_a)
 
 links_df = pd.DataFrame(link_info_list)
