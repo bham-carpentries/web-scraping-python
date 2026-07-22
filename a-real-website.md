@@ -222,7 +222,7 @@ As expected, this will return the `<div>` element with the class attribute "p-8 
 
 ::::::::::::::::::::::::::::::::::: instructor
 
-- Show code below with print(str(div_firsth3)) first
+- Show code below with **print(firsth3_parent)** first
 - Then prettify
 
 :::::::::::::::::::::::::::::::::::::::::::::::
@@ -320,6 +320,7 @@ dict_workshop['program'] = firsth3_parent.get('data-program')
 ```
 
 :::::::::::::::::::::::::::::::::::: instructor
+- Show dict_workshop
 
 - Ask - what if we want to find the information for all of the workshops? 
 
@@ -494,12 +495,12 @@ Sending too many requests in a short period can disrupt access for other users o
 
 To prevent this, you can use Python’s built-in `time` module and its `sleep()` function to pause between requests.
 The `sleep()` function makes Python wait for a specified number of seconds before moving on to the next line of code.
-For example, the following code pauses for 10 seconds between each print statement.
+For example, the following code pauses for 5 seconds between each print statement.
 
 ```python
 from time import sleep
 print('First')
-sleep(10)
+sleep(5)
 print('Second')
 ```
 ::::::::::::::::::::::::::::::::::::::::: instructor
@@ -536,6 +537,7 @@ soup = BeautifulSoup(cleaned_req, 'html.parser')
     - contains useful information
 
 - Extract metadata for first 5 websites
+- View dataframe in property inspector
 :::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 If we explore the HTML using the 'View page source' or 'Inspect' tools in the browser, we notice something interesting inside the `<head>` element.
