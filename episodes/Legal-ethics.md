@@ -1,6 +1,6 @@
 ---
 title: "Ethics and Legality of Web Scraping"
-teaching: 45 # teaching time in minutes
+teaching: 0 # teaching time in minutes
 exercises: 0 # exercise time in minutes
 ---
 
