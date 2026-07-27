@@ -360,6 +360,12 @@ For example, instead of finding the `div` elements with the "p-8 mb-5 border" cl
 Then, we can use a while loop across all its children, each of these being one workshop container.
 The rest of the code would be the same.
 
+:::::::::::::::::::::::::::::::::::: instructor
+
+- For timing, will probably need to skip Challenges
+
+:::::::::::::::::::::::::::::::::::::::::::::::
+
 :::::::::::::::::::::::::::::::::::::::::::::::::: spoiler
 ### Alternative code
 
