@@ -118,7 +118,7 @@
     <a id="search-button" class="btn btn-primary" href="../instructor/aio.html" role="button" aria-label="Search the All In One page">Search the All In One page</a>
   </div><!--/div.container-fluid -->
 </nav><aside class="col-md-12 lesson-progress"><div class="progress incubator">
-    <div class="progress-bar incubator" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">25%</div>
+    <div class="progress-bar incubator" role="progressbar" style="width: 33%" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" aria-label="Lesson Progress">33%</div>
   </div>
 </aside><div class="container">
       <div class="row">
@@ -304,7 +304,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Scraping a real website</h1>
-        <p>Last updated on 2026-07-22 |
+        <p>Last updated on 2026-07-27 |
 
         <a href="https://github.com/josenino95/web-scraping-python/edit/main/episodes/a-real-website.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -804,6 +804,18 @@ workshops, a <code>div</code> with a class attribute of “filtered”.
 Then, we can use a while loop across all its children, each of these
 being one workshop container. The rest of the code would be the
 same.</p>
+<div id="accordionInstructor11" class="accordion instructor-note accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor11" aria-expanded="false" aria-controls="collapseInstructor11">
+  <h3 class="accordion-header" id="headingInstructor11">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+</button>
+<div id="collapseInstructor11" class="accordion-collapse collapse" aria-labelledby="headingInstructor11" data-bs-parent="#accordionInstructor11">
+<div class="accordion-body">
+<ul><li>For timing, will probably need to skip Challenges</li>
+</ul></div>
+</div>
+</div>
+</div>
 <div id="accordionSpoiler2" class="accordion spoiler-accordion accordion-flush">
 <div class="accordion-item">
 <button class="accordion-button spoiler-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpoiler2" aria-expanded="false" aria-controls="collapseSpoiler2">
@@ -959,12 +971,12 @@ therefore BeautifulSoup can find them in the HTML.</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="automating-data-collection">Automating data collection<a class="anchor" aria-label="anchor" href="#automating-data-collection"></a></h2>
-<hr class="half-width"><div id="accordionInstructor11" class="accordion instructor-note accordion-flush">
+<hr class="half-width"><div id="accordionInstructor12" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor11" aria-expanded="false" aria-controls="collapseInstructor11">
-  <h3 class="accordion-header" id="headingInstructor11">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor12" aria-expanded="false" aria-controls="collapseInstructor12">
+  <h3 class="accordion-header" id="headingInstructor12">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor11" class="accordion-collapse collapse" aria-labelledby="headingInstructor11" data-bs-parent="#accordionInstructor11">
+<div id="collapseInstructor12" class="accordion-collapse collapse" aria-labelledby="headingInstructor12" data-bs-parent="#accordionInstructor12">
 <div class="accordion-body">
 <ul><li><p>All data so far taken from single page</p></li>
 <li><p>Information might be across several pages</p></li>
@@ -1005,12 +1017,12 @@ statement.</p>
 <span id="cb12-3"><a href="#cb12-3" tabindex="-1" aria-label="code-block-12-3"></a>sleep(<span class="dv">5</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" tabindex="-1" aria-label="code-block-12-4"></a><span class="bu">print</span>(<span class="st">'Second'</span>)</span></code></pre>
 </div>
-<div id="accordionInstructor12" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor13" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor12" aria-expanded="false" aria-controls="collapseInstructor12">
-  <h3 class="accordion-header" id="headingInstructor12">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor13" aria-expanded="false" aria-controls="collapseInstructor13">
+  <h3 class="accordion-header" id="headingInstructor13">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor12" class="accordion-collapse collapse" aria-labelledby="headingInstructor12" data-bs-parent="#accordionInstructor12">
+<div id="collapseInstructor13" class="accordion-collapse collapse" aria-labelledby="headingInstructor13" data-bs-parent="#accordionInstructor13">
 <div class="accordion-body">
 <ul><li><p>Now extract information from each workshop’s website</p></li>
 <li><p>Use links in the ‘upcomingworkshops_df’ DataFrame</p></li>
@@ -1041,12 +1053,12 @@ workshop in the DataFrame and take a look.</p>
 <span id="cb13-9"><a href="#cb13-9" tabindex="-1" aria-label="code-block-13-9"></a><span class="co"># Parse the HTML</span></span>
 <span id="cb13-10"><a href="#cb13-10" tabindex="-1" aria-label="code-block-13-10"></a>soup <span class="op">=</span> BeautifulSoup(cleaned_req, <span class="st">'html.parser'</span>)</span></code></pre>
 </div>
-<div id="accordionInstructor13" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor14" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor13" aria-expanded="false" aria-controls="collapseInstructor13">
-  <h3 class="accordion-header" id="headingInstructor13">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor14" aria-expanded="false" aria-controls="collapseInstructor14">
+  <h3 class="accordion-header" id="headingInstructor14">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor13" class="accordion-collapse collapse" aria-labelledby="headingInstructor13" data-bs-parent="#accordionInstructor13">
+<div id="collapseInstructor14" class="accordion-collapse collapse" aria-labelledby="headingInstructor14" data-bs-parent="#accordionInstructor14">
 <div class="accordion-body">
 <ul><li>Follow link to first page</li>
 <li>View source</li>
@@ -1142,12 +1154,12 @@ scraping process more robust?</p>
 </button>
 <div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
-<div id="accordionInstructor14" class="accordion instructor-note accordion-flush">
+<div id="accordionInstructor15" class="accordion instructor-note accordion-flush">
 <div class="accordion-item">
-<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor14" aria-expanded="false" aria-controls="collapseInstructor14">
-  <h3 class="accordion-header" id="headingInstructor14">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
+<button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor15" aria-expanded="false" aria-controls="collapseInstructor15">
+  <h3 class="accordion-header" id="headingInstructor15">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor14" class="accordion-collapse collapse" aria-labelledby="headingInstructor14" data-bs-parent="#accordionInstructor14">
+<div id="collapseInstructor15" class="accordion-collapse collapse" aria-labelledby="headingInstructor15" data-bs-parent="#accordionInstructor15">
 <div class="accordion-body">
 <ul><li>May get error if web page is unavailable</li>
 <li>requests returns value
@@ -1271,8 +1283,8 @@ any links that you are not going to use.
   "url": "https://josenino95.github.io/web-scraping-python/instructor/a-real-website.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/instructor/a-real-website.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2026-07-22",
-  "datePublished": "2026-07-22"
+  "dateModified": "2026-07-27",
+  "datePublished": "2026-07-27"
 }
 
   </script><script>

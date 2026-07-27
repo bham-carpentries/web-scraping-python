@@ -350,6 +350,10 @@ any links that you are not going to use.
 <h3 id="hello-scraping-headingInstructor1">
 <a href="hello-scraping.html#headingInstructor1">Instructor Note</a><a class="anchor" aria-label="anchor" href="#hello-scraping-headingInstructor1"></a>
 </h3>
+<ul>
+<li>Timing for this section includes setup time to allow for Python
+installation etc</li>
+</ul>
 <p><strong>Slide</strong> Reminder of what web scraping is</p>
 <p><strong>Slide</strong> Remember - may be APIs or tools to download
 data</p>
@@ -564,6 +568,13 @@ workshops?</p></li>
 <a href="a-real-website.html#headingInstructor11">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor11"></a>
 </h3>
 <ul>
+<li>For timing, will probably need to skip Challenges</li>
+</ul>
+<hr>
+<br><h3 id="a-real-website-headingInstructor12">
+<a href="a-real-website.html#headingInstructor12">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor12"></a>
+</h3>
+<ul>
 <li><p>All data so far taken from single page</p></li>
 <li><p>Information might be across several pages</p></li>
 <li><p>May need to follow hyperlinks</p></li>
@@ -574,8 +585,8 @@ overloading web server</p></li>
 <li><p>Use <strong>sleep()</strong> function to wait</p></li>
 </ul>
 <hr>
-<br><h3 id="a-real-website-headingInstructor12">
-<a href="a-real-website.html#headingInstructor12">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor12"></a>
+<br><h3 id="a-real-website-headingInstructor13">
+<a href="a-real-website.html#headingInstructor13">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor13"></a>
 </h3>
 <ul>
 <li><p>Now extract information from each workshop’s website</p></li>
@@ -585,8 +596,8 @@ overloading web server</p></li>
 array</p></li>
 </ul>
 <hr>
-<br><h3 id="a-real-website-headingInstructor13">
-<a href="a-real-website.html#headingInstructor13">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor13"></a>
+<br><h3 id="a-real-website-headingInstructor14">
+<a href="a-real-website.html#headingInstructor14">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor14"></a>
 </h3>
 <ul>
 <li>Follow link to first page</li>
@@ -601,8 +612,8 @@ array</p></li>
 <li>View dataframe in property inspector</li>
 </ul>
 <hr>
-<br><h3 id="a-real-website-headingInstructor14">
-<a href="a-real-website.html#headingInstructor14">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor14"></a>
+<br><h3 id="a-real-website-headingInstructor15">
+<a href="a-real-website.html#headingInstructor15">Instructor Note</a><a class="anchor" aria-label="anchor" href="#a-real-website-headingInstructor15"></a>
 </h3>
 <ul>
 <li>May get error if web page is unavailable</li>
@@ -627,7 +638,7 @@ array</p></li>
 <li><p>Can you find ‘Spotlight’?</p></li>
 <li><p>JavaScript used to load instructions dynamically</p></li>
 <li><p>Use Inspect to look at Spotlight</p></li>
-<li><p>Requests only accesses original html</p></li>
+<li><p>Requests package only accesses original html</p></li>
 <li><p>Need Selenium package</p></li>
 </ul>
 <hr>
@@ -642,6 +653,8 @@ array</p></li>
 <li>renders web page, loading dynamic content</li>
 <li>access full html after JavaScript executed</li>
 <li>can also simulate interactions - e.g. clicking buttons</li>
+<li>compare to using Web Scraper extension and seeing the web pages
+etc</li>
 </ul>
 </li>
 </ul>
@@ -700,6 +713,7 @@ code</li>
 </ul>
 </li>
 <li><p>Show Inspect of Spotlight to locate tags</p></li>
+<li><p>Create BeautifulSoup object, then</p></li>
 <li><p>To get film title:</p></li>
 </ul>
 <div class="codewrapper sourceCode" id="cb6">
@@ -718,6 +732,21 @@ window</p></li>
 <li><p>Need to set up option for headless mode</p></li>
 <li><p>Open webpage</p></li>
 <li><p>Click to load 2015 data</p></li>
+<li><p>Use a loop to extract the 2015 film titles</p></li>
+<li>
+<p>This is probably the limit for a three hour session</p>
+<ul>
+<li>May need to jump to the scraping pipeline section to round up
+session</li>
+</ul>
+</li>
+</ul>
+<hr>
+<br><h3 id="dynamic-websites-headingInstructor9">
+<a href="dynamic-websites.html#headingInstructor9">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor9"></a>
+</h3>
+<ul>
+<li><p>Extend the program to add extra information</p></li>
 <li>
 <p>Extract information from table one column at a time</p>
 <ul>
@@ -729,8 +758,8 @@ window</p></li>
 <li><p>Add to dataframe</p></li>
 </ul>
 <hr>
-<br><h3 id="dynamic-websites-headingInstructor9">
-<a href="dynamic-websites.html#headingInstructor9">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor9"></a>
+<br><h3 id="dynamic-websites-headingInstructor10">
+<a href="dynamic-websites.html#headingInstructor10">Instructor Note</a><a class="anchor" aria-label="anchor" href="#dynamic-websites-headingInstructor10"></a>
 </h3>
 <p><strong>Slide</strong> to show pipeline steps</p>
 <hr>
@@ -785,8 +814,8 @@ window</p></li>
   "url": "https://josenino95.github.io/web-scraping-python/instructor/instructor-notes.html",
   "identifier": "https://josenino95.github.io/web-scraping-python/instructor/instructor-notes.html",
   "dateCreated": "2024-09-23",
-  "dateModified": "2026-07-22",
-  "datePublished": "2026-07-22"
+  "dateModified": "2026-07-27",
+  "datePublished": "2026-07-27"
 }
 
   </script><script>
