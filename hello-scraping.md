@@ -1,6 +1,6 @@
 ---
 title: "Hello-Scraping"
-teaching: 30
+teaching: 50
 exercises: 10
 ---
 
@@ -22,6 +22,8 @@ exercises: 10
 ## Introduction
 
 ::::::::::::::::::::::::::::::::::::::::::: instructor
+
+- Timing for this section includes setup time to allow for Python installation etc
 
 **Slide** Reminder of what web scraping is
 

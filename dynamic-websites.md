@@ -28,7 +28,7 @@ exercises: 15
 - JavaScript used to load instructions dynamically
 
 - Use Inspect to look at Spotlight
-- Requests only accesses original html
+- Requests package only accesses original html
 - Need Selenium package
 
 :::::::::::::::::::::::::::::::::::::::::::::
@@ -64,6 +64,7 @@ To scrape content that is generated dynamically by JavaScript, we’ll use a dif
     - renders web page, loading dynamic content
     - access full html after JavaScript executed
     - can also simulate interactions - e.g. clicking buttons
+    - compare to using Web Scraper extension and seeing the web pages etc
     
 ::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -202,6 +203,8 @@ This content wasn’t present in the original HTML and wouldn't be accessible if
 
 - Show Inspect of Spotlight to locate tags
 
+- Create BeautifulSoup object, then
+
 - To get film title:
 ```python
 title = soup.find(class_='film').find(class_='film-title').get_text()
@@ -243,6 +246,49 @@ print(soup.find(class_='film').prettify())
 
 - Open webpage
 - Click to load 2015 data
+
+- Use a loop to extract the 2015 film titles
+
+- This is probably the limit for a three hour session
+    - May need to jump to the scraping pipeline section to round up session
+
+:::::::::::::::::::::::::::::::::::::::::::::
+
+The following code repeats the process of clicking and loading the 2015 data, but now in "headless" mode (meaning the browser runs in the background without opening a visible window).
+It then uses a loop to extract all of the 2015 film titles.
+
+```python
+# Create the Selenium webdriver and make it headless
+options = webdriver.ChromeOptions()
+options.add_argument("--headless=new")
+driver = webdriver.Chrome(options=options)
+
+# Load the website. 
+driver.get("https://www.scrapethissite.com/pages/ajax-javascript/")
+
+# Find and click the 2015 button
+button_2015 = driver.find_element(by=By.ID, value="2015")
+button_2015.click()
+sleep(3)
+
+# Get the post JavaScript execution HTML and close the webdriver
+html_2015 = driver.page_source
+driver.quit()
+
+# Extract all of the 2015 film titles
+titles = []
+for elem in soup.find_all(class_="film-title"):
+    titles.append(elem.get_text())
+print(titles)
+
+```
+```output
+['Spotlight  ', 'Mad Max: Fury Road ', 'The Revenant   ', 'Bridge of Spies', 'The Big Short  ', 'The Danish Girl', 'Room   ', 'Ex Machina ', 'The Hateful Eight  ', 'Inside Out ', 'Amy', 'Bear Story ', 'A Girl in the River: The Price of Forgiveness  ', 'Son of Saul', 'Spectre', 'Stutterer  ']
+```
+
+:::::::::::::::::::::::::::::::::: instructor
+
+- Extend the program to add extra information
 - Extract information from table one column at a time
     - Each column has unique class attribute
 
@@ -253,8 +299,62 @@ print(soup.find(class_='film').prettify())
 
 :::::::::::::::::::::::::::::::::::::::::::::
 
-The following code repeats the process of clicking and loading the 2015 data, but now in "headless" mode (meaning the browser runs in the background without opening a visible window).
-After the data loads, the code extracts information from the table one column at a time, using the fact that each column has a unique class attribute.
+
+This code can be extended so that, after the data loads, the code extracts information from the table one column at a time, using the fact that each column has a unique class attribute.
+
+
+```python
+# Create the Selenium webdriver and make it headless
+options = webdriver.ChromeOptions()
+options.add_argument("--headless=new")
+driver = webdriver.Chrome(options=options)
+
+# Load the website. 
+driver.get("https://www.scrapethissite.com/pages/ajax-javascript/")
+
+# Find and click the 2015 button
+button_2015 = driver.find_element(by=By.ID, value="2015")
+button_2015.click()
+sleep(3)
+
+# Get the post JavaScript execution HTML and close the webdriver
+html_2015 = driver.page_source
+driver.quit()
+
+# Parse HTML using BeautifulSoup and extract each column as a list of values ising list comprehensions
+soup = BeautifulSoup(html_2015, 'html.parser')
+
+titles = []
+for elem in soup.find_all(class_="film-title"):
+    titles.append(elem.get_text())
+    
+nominations = []
+for elem in soup.find_all(class_="film-nominations"):
+    nominations.append(elem.get_text())
+    
+awards = []
+for elem in soup.find_all(class_="film-awards"):
+    awards.append(elem.get_text())
+
+# For the best picture column, we can't use .get_text() as there is no text
+# Rather, we want to see if there is an <i> tag
+best_picture = []
+for elem in soup.find_all(class_="film-best-picture"):
+    if elem.find("i") == None:
+        best_picture.append("No")
+    else:
+        best_picture.append("Yes")
+        
+# Create a dataframe based on the previous lists
+movies_2015 = pd.DataFrame(
+    {'titles': titles, 'nominations': nominations, 'awards': awards, 'best_picture': best_picture}
+)
+```
+
+:::::::::::::::::::::::::::::::: spoiler
+
+### A more concise way to generate the lists
+
 Instead of writing traditional for loops to extract the text from each element returned by .find_all(), we use list comprehensions, which provide a more concise way to generate lists.
 You can learn more about them reading [Python's documentation on list comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions) or this [short tutorial by Programiz](https://www.programiz.com/python-programming/list-comprehension).
 
@@ -264,21 +364,26 @@ options = webdriver.ChromeOptions()
 options.add_argument("--headless=new")
 driver = webdriver.Chrome(options=options)
 
-# Load the website. Find and click 2015. Get post JavaScript execution HTML. Close webdriver
+# Load the website. 
 driver.get("https://www.scrapethissite.com/pages/ajax-javascript/")
+
+# Find and click the 2015 button
 button_2015 = driver.find_element(by=By.ID, value="2015")
 button_2015.click()
 sleep(3)
+
+# Get the post JavaScript execution HTML and close the webdriver
 html_2015 = driver.page_source
 driver.quit()
 
-# Parse HTML using BeautifulSoup and extract each column as a list of values ising list comprehensions
+# Parse HTML using BeautifulSoup and extract each column
+# as a list of values using list comprehensions
 soup = BeautifulSoup(html_2015, 'html.parser')
 titles_lc = [elem.get_text() for elem in soup.find_all(class_="film-title")]
 nominations_lc = [elem.get_text() for elem in soup.find_all(class_="film-nominations")]
 awards_lc = [elem.get_text() for elem in soup.find_all(class_="film-awards")]
 
-# For the best picture column, we can't use .get_text() as there is no text
+# For the best picture, we can't use .get_text() as there is no text
 # Rather, we want to see if there is an <i> tag
 best_picture_lc = ["No" if elem.find("i") == None else "Yes" for elem in soup.find_all(class_="film-best-picture")]
 
@@ -287,6 +392,9 @@ movies_2015 = pd.DataFrame(
     {'titles': titles_lc, 'nominations': nominations_lc, 'awards': awards_lc, 'best_picture': best_picture_lc}
 )
 ```
+
+::::::::::::::::::::::::::::::::::::::::
+
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
