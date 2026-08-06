@@ -360,7 +360,7 @@ If you’re planning to collect a large amount of data for research or commercia
 If you’re affiliated with a university, there’s a good chance it has a copyright office or legal team that can help you navigate the legal aspects of your project.
 The university library is often a great starting point for finding support and guidance on copyright and data use.
 
-For more information on the ethics and legality of web scraping please look at the materials from the Introduction to Web Scraping [Ethics and Legality of Web Scraping page](https://carpentries-incubator.github.io/introduction-to-webscraping/Legal-ethics.html). **It is very important to ensure that you are clear about the legality of your web scraping activity and also how you are allowed to use the data that is scraped.** 
+For more information on the ethics and legality of web scraping, please look at the [Ethics and Legality of Web Scraping section](Legal-ethics.md). **It is very important to ensure that you are clear about the legality of your web scraping activity and also how you are allowed to use the data that is scraped.** 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
