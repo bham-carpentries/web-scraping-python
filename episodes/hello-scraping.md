@@ -22,7 +22,7 @@ exercises: 10
 ## Introduction
 
 This workshop is a continuation of our Introduction to Web Scraping workshop.
-If you're looking for a gentler introduction that uses the Web Scraper Chrome extension, take a look at the [workshop materials for that workshop](https://carpentries-incubator.github.io/introduction-to-webscraping/).
+If you're looking for a gentler introduction that uses the Web Scraper Chrome extension, take a look at the [workshop materials for that workshop](https://bham-carpentries.github.io/bham-introduction-to-webscraping/).
 
 Here, we’ll revisit some of those core ideas to build a more hands-on understanding of how content and data are structured on the web. 
 We’ll start by exploring what HTML (Hypertext Markup Language) is and how it uses tags to organize and format content.
