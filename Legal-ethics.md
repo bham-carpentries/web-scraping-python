@@ -108,10 +108,10 @@ Database rights protect the substantial investment someone may have made to crea
 
 ## Scraping of personal data within websites
 If you do not require personal data as part of your research then try and ensure that your scraping does not collect the personal data of individuals e.g. names, email addresses etc.
-As well as meeting copyright requirements you need to meet data protection requirements too.  In the UK, the fact that someone’s personal data may be publicly available does not mean that you can just re-use that information without either relying on an exception or exemption.  This includes information that you may find on social media websites or registers such as Companies House. If providing the people whose data you would be using with privacy information would be impossible or involve a disproportionate effort, then you must carry out a Data Protection Impact Assessment (DPIA).  Completing a DPIA helps you think about the risks involved in how you are using someone’s data and how you can mitigate them. The University has a useful [Data Protection Canvas course](https://canvas.bham.ac.uk/courses/37721) which also includes information about when and how to complete a DPIA. The course will also help you to assess if you have a legal basis for processing someone’s personal data.  
+As well as meeting copyright requirements you need to meet data protection requirements too.  In the UK, the fact that someone’s personal data may be publicly available does not mean that you can just re-use that information without either relying on an exception or exemption.  This includes information that you may find on social media websites or registers such as Companies House. If providing the people whose data you would be using with privacy information would be impossible or involve a disproportionate effort, then you must carry out a Data Protection Impact Assessment (DPIA).  Completing a DPIA helps you think about the risks involved in how you are using someone’s data, how you can mitigate them, and helps you assess if you have a legal basis for processing someone’s personal data.
 
 ## APIs
-Where possible it may be better to use an authorised API for the webservice.  Several online services offer these as do some of the subscription databases provided by the Libraries and Learning Resources.  There is sometimes openly available information about this on some providers websites.  Others require the Library to provide the user with an API key and limit how many users can access this at one time.  Unfortunately, some providers do require an additional cost for an API with their services.  The Library can request quotes for this but is unable to fund them.   If you are interested in using content provided by the Library, then contact [copyright@contacts.bham.ac.uk](copyright@contacts.bham.ac.uk).
+Where possible it may be better to use an authorised API for the webservice.  Several online services offer these as do some subscription databases provided by institutional libraries.  There is sometimes openly available information about this on provider websites.  Others require a library to provide the user with an API key and limit how many users can access this at one time.  Unfortunately, some providers require an additional cost for an API with their services.
 
 ## Denial of Service
 
@@ -125,14 +125,14 @@ Since DoS attacks are unfortunately a common occurrence on the Internet, modern 
 
 A web scraper, even one with legitimate purposes and no intent to bring a website down, can exhibit similar behaviour and, if we are not careful, result in our computer being banned from accessing a website.
 
-Scraping of subscriptions resources provided by the Library can also trigger our systems to deny access.  It can be worth discussing use ahead of time with the relevant parties.
+Scraping subscription resources provided by a library can also trigger systems to deny access.  It can be worth discussing use ahead of time with the relevant parties.
 
 ## Consider asking
 Depending on the scope of your project, it might be worthwhile to consider asking the owners or curators of the data you are planning to scrape if they have it already available in a structured format that could suit your project. If your aim is to use their data for research, or to use it in a way that could potentially interest them, not only it could save you the trouble of writing a web scraper, but it could also help clarify straight away what you can and cannot do with the data.
 
 ## Further help
 
-More information about copyright and text and data mining can be found on the University’s [Copyright for researchers pages](https://intranet.birmingham.ac.uk/student/libraries/copyright/researchers/index.aspx). 
+If you are affiliated with an institution or university, check with your institutional library or copyright office for further guidance on copyright, text and data mining, and licensing agreements. 
 
 
 :::::::::::::::::::::::::::::::::: keypoints
