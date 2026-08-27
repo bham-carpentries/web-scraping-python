@@ -286,20 +286,6 @@ print(titles)
 ['Spotlight  ', 'Mad Max: Fury Road ', 'The Revenant   ', 'Bridge of Spies', 'The Big Short  ', 'The Danish Girl', 'Room   ', 'Ex Machina ', 'The Hateful Eight  ', 'Inside Out ', 'Amy', 'Bear Story ', 'A Girl in the River: The Price of Forgiveness  ', 'Son of Saul', 'Spectre', 'Stutterer  ']
 ```
 
-:::::::::::::::::::::::::::::::::: instructor
-
-- Extend the program to add extra information
-- Extract information from table one column at a time
-    - Each column has unique class attribute
-
-- Use list comprehensions to extract data
-- For best picture need to check if element is there
-
-- Add to dataframe
-
-:::::::::::::::::::::::::::::::::::::::::::::
-
-
 This code can be extended so that, after the data loads, the code extracts information from the table one column at a time, using the fact that each column has a unique class attribute.
 
 

@@ -509,15 +509,6 @@ print('First')
 sleep(5)
 print('Second')
 ```
-::::::::::::::::::::::::::::::::::::::::: instructor
-
-- Now extract information from each workshop's website
-- Use links in the 'upcomingworkshops_df' DataFrame
-
-- Use link to first workshop
-- df.loc - access group of rows and cols by label or boolean array
-::::::::::::::::::::::::::::::::::::::::::::::::::::
-
 Let’s incorporate this important principle as we extract additional information from each workshop’s individual website.
 We already have our `upcomingworkshops_df` DataFrame, which includes a `link` column containing the URL for each workshop’s webpage.
 For example, let’s make a request to retrieve the HTML of the first workshop in the DataFrame and take a look.
