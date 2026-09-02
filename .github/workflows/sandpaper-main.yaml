@@ -3,7 +3,7 @@ name: "01 Build and Deploy Site"
 on:
   push:
     branches:
-      - bham-update
+      - bham-update-test
       - master
   schedule:
     - cron: '0 0 * * 2'
