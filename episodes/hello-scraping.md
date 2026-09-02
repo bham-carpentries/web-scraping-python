@@ -134,18 +134,6 @@ As a first step, we’ll load the `BeautifulSoup` package along with Pandas.
 from bs4 import BeautifulSoup
 import pandas as pd
 ```
-::::::::::::::::::::::::::::::::::: instructor
-
-Jupyter Lab: 
-
-Right click on cell -> Open Variable Inspector (Jupyter Lab, not Notebook)
-
-Shift+Enter - run cell
-
-NB - can copy html text from web source code
-
-:::::::::::::::::::::::::::::::::::::::::::::
-
 Let’s store the HTML content in a string variable named `example_html`.
 
 ```python
@@ -399,13 +387,6 @@ print(links_df)
 1  <a href="https://carpentries.org/workshops/pas...  https://carpentries.org/workshops/past-workshops/            past workshops
 ```
 
-:::::::::::::::::::::::::::: instructor
-- Create DataFrame column titles:
-    - links_df = pd.DataFrame(link_info_list, columns = ['element', 'url','text'])
-
-- index - Write row names, default True 
-:::::::::::::::::::::::::::::::::::::::
-
 The dataframe can also be exported as, for example, a .csv file
 
 ```python
@@ -443,9 +424,7 @@ If you’re planning to collect a large amount of data for research or commercia
 If you’re affiliated with a university, there’s a good chance it has a copyright office or legal team that can help you navigate the legal aspects of your project.
 The university library is often a great starting point for finding support and guidance on copyright and data use.
 
-For more information on the ethics and legality of web scraping please look at the materials from the Introduction to Web Scraping [Ethics and Legality of Web Scraping page](https://bham-carpentries.github.io/bham-introduction-to-webscraping/Legal-ethics.html). **It is very important to ensure that you are clear about the legality of your web scraping activity and also how you are allowed to use the data that is scraped.**
-
-More information about copyright and text and data mining can be found on the University’s [Copyright for researchers pages](https://intranet.birmingham.ac.uk/student/libraries/copyright/researchers/index.aspx). 
+For more information on the ethics and legality of web scraping, please look at the [Ethics and Legality of Web Scraping section](Legal-ethics.md). **It is very important to ensure that you are clear about the legality of your web scraping activity and also how you are allowed to use the data that is scraped.** 
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
